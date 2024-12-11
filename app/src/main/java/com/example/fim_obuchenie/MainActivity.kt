@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             super.onDraw(canvas)
             val rect = Rect(0, screenHeight-rectHeight, rectWidth, screenHeight) // Используем рассчитанные размеры
             canvas.drawRect(rect, paint)
-            private var penis = 12
         }
     }
 }
