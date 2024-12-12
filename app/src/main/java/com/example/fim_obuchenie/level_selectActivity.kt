@@ -11,7 +11,6 @@ import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
-import com.example.fim_obuchenie.MainActivity.MainView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import android.widget.TextView
@@ -19,81 +18,6 @@ import android.widget.TextView
 class level_selectActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(MainView(this))
-
     }
-    class MainView @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-    ) : View(context, attrs, defStyleAttr) {
-
-        private val paint = Paint().apply {
-            color = ContextCompat.getColor(context, R.color.cyan)
-            style = Paint.Style.FILL
-        }
-
-        //размеры в процентном соотношении
-        private var widthPercent = 1f
-        private var heightPercent = 0.52f
-        private var screenHeight = 0
-        private var screenWidth = 0
-
-        private var rectWidth = 0
-        private var rectHeight = 0
-
-        init {
-            val displayMetrics = DisplayMetrics()
-            val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            windowManager.defaultDisplay.getMetrics(displayMetrics)
-            screenWidth = displayMetrics.widthPixels
-            screenHeight = displayMetrics.heightPixels
-
-            // Рассчитываем абсолютные размеры в пикселях
-            rectWidth = (screenWidth * widthPercent).toInt()
-            rectHeight = (screenHeight * heightPercent).toInt()
-        }
-
-        override fun onDraw(canvas: Canvas) {
-            super.onDraw(canvas)
-            val rect = Rect(
-                0,
-                screenHeight - rectHeight,
-                rectWidth,
-                screenHeight
-            ) // Используем рассчитанные размеры
-            canvas.drawRect(rect, paint)
-        }
-    }
-
-    val constraintLayout = ConstraintLayout(this)
-    constraintLayout.layoutParams = ConstraintLayout.LayoutParams(
-    ConstraintLayout.LayoutParams.MATCH_PARENT,
-    ConstraintLayout.LayoutParams.MATCH_PARENT
-    )
-
-    // Создаем TextView
-    val textView = TextView(this).apply {
-        id = View.generateViewId() // Генерация уникального ID для TextView
-        text = "Hello, Kotlin!"
-        layoutParams = ConstraintLayout.LayoutParams(
-            ConstraintLayout.LayoutParams.WRAP_CONTENT,
-            ConstraintLayout.LayoutParams.WRAP_CONTENT
-        )
-    }
-
-    // Добавляем TextView в ConstraintLayout
-    constraintLayout.addView(textView)
-
-    // Устанавливаем ограничения для TextView
-    val constraintSet = ConstraintSet()
-    constraintSet.clone(constraintLayout)
-    constraintSet.connect(textView.id, ConstraintSet.TOP, constraintLayout.id, ConstraintSet.TOP, 16) // Отступ сверху
-    constraintSet.connect(textView.id, ConstraintSet.START, constraintLayout.id, ConstraintSet.START, 0) // Привязка к началу родителя (лево)
-    constraintSet.applyTo(constraintLayout)
-
-    // Устанавливаем ConstraintLayout как содержимое активности
-    setContentView(constraintLayout)
-}
 }
 
