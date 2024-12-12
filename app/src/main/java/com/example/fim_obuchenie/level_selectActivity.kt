@@ -94,6 +94,6 @@ class level_selectActivity: AppCompatActivity() {
 
     // Устанавливаем ConstraintLayout как содержимое активности
     setContentView(constraintLayout)
-    }
+}
 }
 
