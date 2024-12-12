@@ -12,6 +12,9 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
 import com.example.fim_obuchenie.MainActivity.MainView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import android.widget.TextView
 
 class level_selectActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,4 +65,35 @@ class level_selectActivity: AppCompatActivity() {
             canvas.drawRect(rect, paint)
         }
     }
+
+    val constraintLayout = ConstraintLayout(this)
+    constraintLayout.layoutParams = ConstraintLayout.LayoutParams(
+    ConstraintLayout.LayoutParams.MATCH_PARENT,
+    ConstraintLayout.LayoutParams.MATCH_PARENT
+    )
+
+    // Создаем TextView
+    val textView = TextView(this).apply {
+        id = View.generateViewId() // Генерация уникального ID для TextView
+        text = "Hello, Kotlin!"
+        layoutParams = ConstraintLayout.LayoutParams(
+            ConstraintLayout.LayoutParams.WRAP_CONTENT,
+            ConstraintLayout.LayoutParams.WRAP_CONTENT
+        )
+    }
+
+    // Добавляем TextView в ConstraintLayout
+    constraintLayout.addView(textView)
+
+    // Устанавливаем ограничения для TextView
+    val constraintSet = ConstraintSet()
+    constraintSet.clone(constraintLayout)
+    constraintSet.connect(textView.id, ConstraintSet.TOP, constraintLayout.id, ConstraintSet.TOP, 16) // Отступ сверху
+    constraintSet.connect(textView.id, ConstraintSet.START, constraintLayout.id, ConstraintSet.START, 0) // Привязка к началу родителя (лево)
+    constraintSet.applyTo(constraintLayout)
+
+    // Устанавливаем ConstraintLayout как содержимое активности
+    setContentView(constraintLayout)
+    }
 }
+
