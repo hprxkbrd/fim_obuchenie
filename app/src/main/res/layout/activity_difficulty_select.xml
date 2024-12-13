@@ -9,18 +9,6 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="2dp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.555"
-        app:srcCompat="@drawable/logo_cyan" />
-
     <View
         android:id="@+id/view"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,53 +29,46 @@
     <Button
         android:id="@+id/button1"
         style="@style/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        android:text="@string/lang_select"
+        android:layout_marginTop="48dp"
+        android:text="Низкий"
         android:textColor="@color/white"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="194dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <Button
         android:id="@+id/button2"
         style="@style/button"
+        android:text="Средний"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button1"
-        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button1"
         app:layout_constraintTop_toBottomOf="@+id/button1"
-        app:layout_constraintVertical_bias="0.0"
-        android:text="@string/theme_select"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="372dp" />
+        app:layout_constraintVertical_bias="0.104" />
 
     <Button
         android:id="@+id/button3"
         style="@style/button"
+        android:text="Высокий"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.0"
-        android:text="@string/lvl_select"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="452dp" />
+        app:layout_constraintVertical_bias="0.184" />
 
     <Button
         android:id="@+id/button4"
         style="@style/button"
+        android:text="Тестирование"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/button3"
         app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.0"
-        android:text="@string/task_select"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="274dp" />
+        app:layout_constraintVertical_bias="0.308" />
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -111,6 +92,20 @@
         android:layout_height="29dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выберите уровень сложности"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
