@@ -30,7 +30,7 @@
         android:id="@+id/button1"
         style="@style/button"
         android:layout_marginTop="48dp"
-        android:text="Низкий"
+        android:text="C++"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
@@ -40,7 +40,7 @@
     <Button
         android:id="@+id/button2"
         style="@style/button"
-        android:text="Средний"
+        android:text="java"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button1"
         app:layout_constraintHorizontal_bias="0.0"
@@ -51,7 +51,7 @@
     <Button
         android:id="@+id/button3"
         style="@style/button"
-        android:text="Высокий"
+        android:text="python"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,7 +62,7 @@
     <Button
         android:id="@+id/button4"
         style="@style/button"
-        android:text="Тестирование"
+        android:text="SQL"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/button3"
         app:layout_constraintHorizontal_bias="1.0"
@@ -98,14 +98,12 @@
         style="@style/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Выберите уровень сложности"
         android:gravity="center"
+        android:text="выбор языка програмирования"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575" />
+        app:layout_constraintVertical_bias="0.59" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
