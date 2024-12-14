@@ -3,11 +3,9 @@ package com.example.fim_obuchenie
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class level_selectActivity: AppCompatActivity() {
+class failedActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lvl_select)
-
+        setContentView(R.layout.activity_failed)
     }
 }
-

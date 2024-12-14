@@ -37,16 +37,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/acc_icon" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="34dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_arrow" ></ImageView>
-
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
@@ -131,5 +121,15 @@
         app:layout_constraintEnd_toEndOf="@+id/view6"
         app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toTopOf="@+id/view6" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="67dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_arrow__1_" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
