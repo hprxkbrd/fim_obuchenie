@@ -28,7 +28,7 @@
     </View>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button1_select"
         style="@style/button"
         android:layout_width="94dp"
         android:layout_height="94dp"
