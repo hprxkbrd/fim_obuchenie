@@ -1,7 +1,9 @@
 package com.example.fim_obuchenie
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 class level_selectActivity: AppCompatActivity() {
@@ -9,9 +11,10 @@ class level_selectActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lvl_select)
 
-        val btn_task = findViewById<Button>(R.id.button1_select)
-        btn_task.setOnClickListener {
-            setContentView(R.layout.activity_task)
+        val btn_back = findViewById<ImageButton>(R.id.back)
+        btn_back.setOnClickListener {
+            val intent = Intent(this, difficultySelectActivity::class.java)
+            startActivity(intent)
         }
     }
 }
