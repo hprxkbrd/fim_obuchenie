@@ -29,11 +29,10 @@
     <Button
         android:id="@+id/button1"
         style="@style/button"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
         android:text="Низкий"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
@@ -72,16 +71,15 @@
 
     <ImageButton
         android:id="@+id/imageButton1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/acc_icon"
         android:layout_width="62dp"
         android:layout_height="62dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
         android:backgroundTint="@color/white"
-        tools:layout_editor_absoluteX="351dp"
-        tools:layout_editor_absoluteY="0dp" />
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/acc_icon" />
 
     <ImageButton
         android:id="@+id/back"
@@ -98,14 +96,13 @@
         style="@style/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Выберите уровень сложности"
         android:gravity="center"
+        android:text="Выберите уровень сложности"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575" />
+        app:layout_constraintVertical_bias="0.573" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

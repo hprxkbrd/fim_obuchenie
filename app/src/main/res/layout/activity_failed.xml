@@ -11,14 +11,14 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="412dp"
-        android:layout_height="750dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_weight="0.3"
         android:background="@color/cyan"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintHeight_percent="0.8"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

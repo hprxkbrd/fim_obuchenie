@@ -11,63 +11,71 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="412dp"
-        android:layout_height="750dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_weight="0.3"
         android:background="@color/cyan"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.6"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.992" />
+        app:layout_constraintVertical_bias="0.987" />
 
     <Button
         android:id="@+id/button"
         style="@style/button"
-        android:layout_width="124dp"
-        android:layout_height="93dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="52dp"
-        android:text="Средний"
+        android:text="Меню"
+        android:textSize="29sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3" />
 
     <Button
         android:id="@+id/button2"
         style="@style/button"
-        android:layout_width="124dp"
-        android:layout_height="93dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="52dp"
-        android:text="Средний"
+        android:text="Еще раз"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="143dp" />
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintWidth_percent="0.3" />
 
     <Button
         android:id="@+id/button6"
         style="@style/button"
-        android:layout_width="124dp"
-        android:layout_height="93dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="52dp"
-        android:text="Средний"
+        android:text="Дальше"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2" />
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintWidth_percent="0.3" />
 
     <ImageButton
         android:id="@+id/imageButton1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/acc_icon"
         android:layout_width="62dp"
         android:layout_height="62dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/white"
-        tools:layout_editor_absoluteX="351dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/acc_icon" />
 
     <ImageButton
         android:id="@+id/back"
@@ -83,21 +91,28 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/handjet"
         android:gravity="center"
-        android:text="прошел"
+        android:text="Успех!"
         android:textColor="@color/white"
         android:textSize="45sp"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="457dp" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="228dp"
-        android:layout_height="138dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:srcCompat="@android:drawable/presence_online"
-        tools:layout_editor_absoluteX="91dp" />
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.185"
+
+        app:srcCompat="@drawable/icons8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
