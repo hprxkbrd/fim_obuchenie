@@ -13,6 +13,7 @@ class level_selectActivity: AppCompatActivity() {
 
         val btn_back = findViewById<ImageButton>(R.id.back)
         btn_back.setOnClickListener {
+            
             val intent = Intent(this, difficultySelectActivity::class.java)
             startActivity(intent)
         }

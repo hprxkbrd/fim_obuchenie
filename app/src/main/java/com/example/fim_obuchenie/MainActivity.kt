@@ -11,7 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var viewModel = ViewModel()
+
         val btn_dfcltySlct = findViewById<Button>(R.id.button3)
+
         btn_dfcltySlct.setOnClickListener {
             val intent = Intent(this@MainActivity, difficultySelectActivity::class.java)
             startActivity(intent)

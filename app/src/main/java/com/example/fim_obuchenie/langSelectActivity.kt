@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 class langSelectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var viewModel = ViewModel()
+
         setContentView(R.layout.activity_lang_select)
         //back
         val btn_back = findViewById<ImageButton>(R.id.back)
@@ -40,6 +43,5 @@ class langSelectActivity : AppCompatActivity() {
             val intent = Intent(this, themeSelectActivity::class.java)
             startActivity(intent)
         }
-        //
     }
 }
