@@ -23,25 +23,25 @@ class difficultySelectActivity :AppCompatActivity() {
         val btn_next1 = findViewById<Button>(R.id.button1)
         btn_next1.setOnClickListener {
             btn_next1.text = viewModel.getLang().toString()
-            val intent = Intent(this, level_selectActivity::class.java)
+            val intent = Intent(this, task_selectActivity::class.java)
             startActivity(intent)
         }
 
         val btn_next2 = findViewById<Button>(R.id.button2)
         btn_next2.setOnClickListener {
-            val intent = Intent(this, level_selectActivity::class.java)
+            val intent = Intent(this, task_selectActivity::class.java)
             startActivity(intent)
         }
 
         val btn_next3 = findViewById<Button>(R.id.button3)
         btn_next3.setOnClickListener {
-            val intent = Intent(this, level_selectActivity::class.java)
+            val intent = Intent(this, task_selectActivity::class.java)
             startActivity(intent)
         }
 
         val btn_next4 = findViewById<Button>(R.id.button4)
         btn_next4.setOnClickListener {
-            val intent = Intent(this, level_selectActivity::class.java)
+            val intent = Intent(this, task_selectActivity::class.java)
             startActivity(intent)
         }
     }

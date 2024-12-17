@@ -15,6 +15,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="logo"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -39,9 +40,9 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/lang_button"
         style="@style/button"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="72dp"
         android:text="@string/lang_select"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,51 +51,46 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/theme_button"
         style="@style/button"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/theme_select"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button1"
-        app:layout_constraintHorizontal_bias="0.536"
-        app:layout_constraintStart_toStartOf="@+id/button1"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/lang_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lang_button"
+        app:layout_constraintTop_toBottomOf="@+id/lang_button" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/difficulty_button"
         style="@style/button"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/lvl_select"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/theme_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/theme_button"
+        app:layout_constraintTop_toBottomOf="@+id/theme_button" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/task_button"
         style="@style/button"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/task_select"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="@+id/difficulty_button"
         app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/difficulty_button"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_button"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton1"
-        android:backgroundTint="@color/white"
+        android:id="@+id/imagelang_button"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/acc_icon" />
 

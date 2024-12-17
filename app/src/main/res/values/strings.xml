@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FIM-обучение</string>
-    <string name="lang_select">Выбрать язык</string>
-    <string name="theme_select">Выбрать тему</string>
-    <string name="lvl_select">Выбрать уровень</string>
-    <string name="task_select">Выбрать задание</string>
+    <string name="lang_select">Язык</string>
+    <string name="theme_select">Тема</string>
+    <string name="lvl_select">Сложность</string>
+    <string name="task_select">Задание</string>
 </resources>
