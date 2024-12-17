@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 class themeSelectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var viewModel = ViewModel()
+
         setContentView(R.layout.activity_theme_select)
         //back
         val btn_back = findViewById<ImageButton>(R.id.back)
@@ -20,24 +23,28 @@ class themeSelectActivity : AppCompatActivity() {
         val btn_next1 = findViewById<Button>(R.id.topic1)
         btn_next1.setOnClickListener {
             val intent = Intent(this, difficultySelectActivity::class.java)
+            viewModel.setTopic(1)
             startActivity(intent)
         }
 
         val btn_next2 = findViewById<Button>(R.id.topic2)
         btn_next2.setOnClickListener {
             val intent = Intent(this, difficultySelectActivity::class.java)
+            viewModel.setTopic(2)
             startActivity(intent)
         }
 
         val btn_next3 = findViewById<Button>(R.id.topic3)
         btn_next3.setOnClickListener {
             val intent = Intent(this, difficultySelectActivity::class.java)
+            viewModel.setTopic(3)
             startActivity(intent)
         }
 
         val btn_next4 = findViewById<Button>(R.id.topic4)
         btn_next4.setOnClickListener {
             val intent = Intent(this, difficultySelectActivity::class.java)
+            viewModel.setTopic(4)
             startActivity(intent)
         }
         //
