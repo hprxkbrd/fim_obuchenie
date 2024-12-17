@@ -17,25 +17,25 @@ class themeSelectActivity : AppCompatActivity() {
             startActivity(intent)
         }
         //next
-        val btn_next1 = findViewById<Button>(R.id.button1)
+        val btn_next1 = findViewById<Button>(R.id.topic1)
         btn_next1.setOnClickListener {
             val intent = Intent(this, difficultySelectActivity::class.java)
             startActivity(intent)
         }
 
-        val btn_next2 = findViewById<Button>(R.id.button2)
+        val btn_next2 = findViewById<Button>(R.id.topic2)
         btn_next2.setOnClickListener {
             val intent = Intent(this, difficultySelectActivity::class.java)
             startActivity(intent)
         }
 
-        val btn_next3 = findViewById<Button>(R.id.button3)
+        val btn_next3 = findViewById<Button>(R.id.topic3)
         btn_next3.setOnClickListener {
             val intent = Intent(this, difficultySelectActivity::class.java)
             startActivity(intent)
         }
 
-        val btn_next4 = findViewById<Button>(R.id.button4)
+        val btn_next4 = findViewById<Button>(R.id.topic4)
         btn_next4.setOnClickListener {
             val intent = Intent(this, difficultySelectActivity::class.java)
             startActivity(intent)
