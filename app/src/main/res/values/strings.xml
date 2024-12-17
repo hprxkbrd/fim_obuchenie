@@ -4,4 +4,23 @@
     <string name="theme_select">Тема</string>
     <string name="lvl_select">Сложность</string>
     <string name="task_select">Задание</string>
+    <string name="menu">Меню</string>
+    <string name="again">еще раз</string>
+    <string name="success">успех</string>
+    <string name="next">дальше</string>
+    <string name="easy">низкий</string>
+    <string name="mid">средний</string>
+    <string name="hard">высокий</string>
+    <string name="test">тестирование</string>
+    <string name="Cplusplus">C++</string>
+    <string name="java">java</string>
+    <string name="python">python</string>
+    <string name="SQL">SQL</string>
+    <string name="Task">Task</string>
+    <string name="Task_1_content">Task 1 content</string>
+    <string name="code_task_1">code task 1</string>
+    <string name="cicle_for">цикл for</string>
+    <string name="array">массивы</string>
+    <string name="OOP">ООП</string>
+    <string name="functions">функции</string>
 </resources>
