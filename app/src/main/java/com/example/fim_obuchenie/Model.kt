@@ -19,5 +19,4 @@ class Model {
     fun setDfclty(nDfclty : Int){dfclty = nDfclty}
     fun setTask(nTask : Int){task = nTask}
     fun setCompltdTask(nCmltdTask : Int){cmpltdtask = nCmltdTask}
-
 }

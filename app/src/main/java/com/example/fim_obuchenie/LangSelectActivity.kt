@@ -6,11 +6,12 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
-class langSelectActivity : AppCompatActivity() {
+class LangSelectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var viewModel = ViewModel()
+        val viewModel = ViewModel()
+        val db = TasksDB.getDatabase(this)
 
         setContentView(R.layout.activity_lang_select)
         //back

@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
+    id("kotlin-kapt")
 }
 
 android {
@@ -35,9 +38,13 @@ android {
     }
 }
 
-dependencies {
+room{
+    schemaDirectory("$projectDir/schemas")
+}
 
-    implementation(libs.androidx.core.ktx)
+dependencies {
+    implementation("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
