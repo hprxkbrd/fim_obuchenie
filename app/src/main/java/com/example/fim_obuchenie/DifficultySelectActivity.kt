@@ -16,7 +16,7 @@ class DifficultySelectActivity : AppCompatActivity() {
         //back
         val btn_back = findViewById<ImageButton>(R.id.back)
         btn_back.setOnClickListener {
-            val intent = Intent(this, themeSelectActivity::class.java)
+            val intent = Intent(this, ThemeSelectActivity::class.java)
             startActivity(intent)
         }
         //next

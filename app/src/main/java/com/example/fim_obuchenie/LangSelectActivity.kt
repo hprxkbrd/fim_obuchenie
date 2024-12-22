@@ -11,7 +11,6 @@ class LangSelectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val viewModel = ViewModel()
-        val db = TasksDB.getDatabase(this)
 
         setContentView(R.layout.activity_lang_select)
         //back
@@ -23,28 +22,28 @@ class LangSelectActivity : AppCompatActivity() {
         //next
         val btn_next1 = findViewById<Button>(R.id.button1)
         btn_next1.setOnClickListener {
-            val intent = Intent(this, themeSelectActivity::class.java)
+            val intent = Intent(this, ThemeSelectActivity::class.java)
             viewModel.setLang(1)
             startActivity(intent)
         }
 
         val btn_next2 = findViewById<Button>(R.id.button2)
         btn_next2.setOnClickListener {
-            val intent = Intent(this, themeSelectActivity::class.java)
+            val intent = Intent(this, ThemeSelectActivity::class.java)
             viewModel.setLang(2)
             startActivity(intent)
         }
 
         val btn_next3 = findViewById<Button>(R.id.button3)
         btn_next3.setOnClickListener {
-            val intent = Intent(this, themeSelectActivity::class.java)
+            val intent = Intent(this, ThemeSelectActivity::class.java)
             viewModel.setLang(3)
             startActivity(intent)
         }
 
         val btn_next4 = findViewById<Button>(R.id.button4)
         btn_next4.setOnClickListener {
-            val intent = Intent(this, themeSelectActivity::class.java)
+            val intent = Intent(this, ThemeSelectActivity::class.java)
             viewModel.setLang(4)
             startActivity(intent)
         }

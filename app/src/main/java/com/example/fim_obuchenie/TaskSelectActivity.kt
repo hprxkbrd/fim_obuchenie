@@ -22,7 +22,7 @@ class TaskSelectActivity: AppCompatActivity() {
         }
 
         //next
-        val btn_next1 = findViewById<Button>(R.id.button1)
+        val btn_next1 = findViewById<Button>(R.id.button1_select)
         btn_next1.setOnClickListener {
             btn_next1.text = viewModel.getLang().toString()
             val intent = Intent(this, TaskSelectActivity::class.java)

@@ -1,8 +1,11 @@
 package com.example.fim_obuchenie
 
-var model = Model()
+
 
 class ViewModel {
+
+    var model = Model()
+
     fun getLang() : Int {return model.getLang()}
     fun getTopic() : Int {return model.getTopic()}
     fun getDfclty() : Int {return model.getDfclty()}
