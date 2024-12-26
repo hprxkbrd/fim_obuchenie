@@ -22,25 +22,28 @@ class DifficultySelectActivity : AppCompatActivity() {
         //next
         val btn_next1 = findViewById<Button>(R.id.easyButton)
         btn_next1.setOnClickListener {
-            btn_next1.text = viewModel.getLang().toString()
+            viewModel.setDfclty(1)
             val intent = Intent(this, TaskSelectActivity::class.java)
             startActivity(intent)
         }
 
         val btn_next2 = findViewById<Button>(R.id.midButton)
         btn_next2.setOnClickListener {
+            viewModel.setDfclty(2)
             val intent = Intent(this, TaskSelectActivity::class.java)
             startActivity(intent)
         }
 
         val btn_next3 = findViewById<Button>(R.id.hardButton)
         btn_next3.setOnClickListener {
+            viewModel.setDfclty(3)
             val intent = Intent(this, TaskSelectActivity::class.java)
             startActivity(intent)
         }
 
         val btn_next4 = findViewById<Button>(R.id.testButton)
         btn_next4.setOnClickListener {
+            viewModel.setDfclty(0)
             val intent = Intent(this, TaskSelectActivity::class.java)
             startActivity(intent)
         }

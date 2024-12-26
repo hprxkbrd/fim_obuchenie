@@ -11,8 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var viewModel = ViewModel()
-
         val btn_langSlct = findViewById<Button>(R.id.lang_button)
         btn_langSlct.setOnClickListener {
             val intent = Intent(this@MainActivity, LangSelectActivity::class.java)
