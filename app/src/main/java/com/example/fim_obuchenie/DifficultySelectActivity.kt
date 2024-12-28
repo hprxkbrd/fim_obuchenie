@@ -1,17 +1,19 @@
 package com.example.fim_obuchenie
 
+import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
+@AndroidEntryPoint
 class DifficultySelectActivity : AppCompatActivity() {
+    private val viewModel: ViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_difficulty_select)
-
-        var viewModel = ViewModel()
 
         //back
         val btn_back = findViewById<ImageButton>(R.id.back)

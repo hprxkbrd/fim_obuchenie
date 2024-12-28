@@ -2,7 +2,7 @@
     <string name="app_name">FIM-обучение</string>
     <string name="lang_select">Язык</string>
     <string name="theme_select">Тема</string>
-    <string name="lvl_select">Сложность</string>
+    <string name="difficulty_select">Сложность</string>
     <string name="task_select">Задание</string>
     <string name="menu">Меню</string>
     <string name="again">Ещё раз</string>

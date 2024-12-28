@@ -1,10 +1,11 @@
 package com.example.fim_obuchenie
 
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-
-class ViewModel {
-
-    var model = Model()
+@HiltViewModel
+class ViewModel @Inject constructor(private val model: Model) : ViewModel(){
 
     fun getLang() : Int {return model.getLang()}
     fun getTopic() : Int {return model.getTopic()}
@@ -17,6 +18,4 @@ class ViewModel {
     fun setDfclty(nDfclty : Int) {model.setDfclty(nDfclty)}
     fun setTask(nTask : Int) {model.setTask(nTask)}
     fun setCmpltdTask(nCmpldTask : Int) {model.setCompltdTask(nCmpldTask)}
-
-
 }
