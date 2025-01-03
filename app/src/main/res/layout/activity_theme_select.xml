@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ThemeSelectActivity"
+    tools:context=".MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="2dp">
 
@@ -71,14 +71,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imagetopic1"
+        android:id="@+id/account_button"
         android:backgroundTint="@color/white"
         android:layout_width="62dp"
         android:layout_height="62dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/acc_icon" />
 

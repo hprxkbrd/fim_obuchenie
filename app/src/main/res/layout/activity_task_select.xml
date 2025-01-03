@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".TaskSelectActivity"
+    tools:context=".MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="2dp">
 
@@ -198,11 +198,11 @@
         app:layout_constraintWidth_percent="0.28" />
 
     <ImageButton
-        android:id="@+id/imageButton1"
+        android:id="@+id/account_button"
         android:layout_width="62dp"
         android:layout_height="62dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -210,8 +210,7 @@
 
     <ImageButton
         android:id="@+id/back"
-        android:layout_width="67dp"
-        android:layout_height="59dp"
+        style="@style/back"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"

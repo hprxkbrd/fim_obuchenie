@@ -4,13 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.appcompat.app.AppCompatActivity
 
-@AndroidEntryPoint
-class TestResultActivity : AppCompatActivity(){
-    private val viewModel: ViewModel by viewModels()
+class TestResultActivity : ComponentActivity(){
+
+    private val viewModel: SharedViewModel by viewModels()
+
+    val lang_field = findViewById<TextView>(R.id.lang)
+    val topic_field = findViewById<TextView>(R.id.topic)
+    val difficulty_field = findViewById<TextView>(R.id.difficulty)
+    val task_field = findViewById<TextView>(R.id.task)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_result)
@@ -21,14 +27,17 @@ class TestResultActivity : AppCompatActivity(){
             startActivity(intent)
         }
 
-        val lang_field = findViewById<TextView>(R.id.lang)
-        val topic_field = findViewById<TextView>(R.id.topic)
-        val difficulty_field = findViewById<TextView>(R.id.difficulty)
-        val task_field = findViewById<TextView>(R.id.task)
-
-        lang_field.setText("Lang: "+viewModel.getLang().toString())
-        topic_field.setText("Topic: "+viewModel.getTopic().toString())
-        difficulty_field.setText("Difficulty: "+viewModel.getDfclty().toString())
-        task_field.setText("Task #"+viewModel.getTask().toString())
+        viewModel.lang.observe(this) {
+            lang_field.setText("Lang: " + viewModel.getLangValue().toString())
+        }
+        viewModel.topic.observe(this){
+            topic_field.setText("Topic: " + viewModel.getTopicValue().toString())
+        }
+        viewModel.dfclty.observe(this){
+            difficulty_field.setText("Difficulty: " + viewModel.getDfcltyValue().toString())
+        }
+        viewModel.task.observe(this){
+            task_field.setText("Task #" + viewModel.getTaskValue().toString())
+        }
     }
 }

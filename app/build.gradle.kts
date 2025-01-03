@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -30,13 +31,20 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

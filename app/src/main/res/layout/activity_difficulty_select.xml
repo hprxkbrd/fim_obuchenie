@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".DifficultySelectActivity"
+    tools:context=".MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="2dp">
 
@@ -68,21 +68,19 @@
         app:layout_constraintTop_toBottomOf="@+id/hardButton" />
 
     <ImageButton
-        android:id="@+id/imageeasyButton"
+        android:id="@+id/account_button"
         android:layout_width="62dp"
         android:layout_height="62dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
         android:backgroundTint="@color/white"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/acc_icon" />
 
     <ImageButton
         android:id="@+id/back"
-        android:layout_width="67dp"
-        android:layout_height="59dp"
+        style="@style/back"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,8 +97,7 @@
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.573" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

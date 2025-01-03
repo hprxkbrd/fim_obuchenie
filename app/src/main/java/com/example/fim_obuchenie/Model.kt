@@ -1,10 +1,6 @@
 package com.example.fim_obuchenie
 
-import javax.inject.Inject
-import javax.inject.Singleton
-
-@Singleton
-class Model @Inject constructor(){
+class Model {
 
     private var lang:Int = -1
     private var topic:Int = -1
