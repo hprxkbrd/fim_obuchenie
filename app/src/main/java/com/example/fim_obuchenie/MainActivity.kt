@@ -1,25 +1,22 @@
 package com.example.fim_obuchenie
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : ComponentActivity() {
-    private val viewModel : SharedViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val viewModel : SharedViewModel by viewModels()
         super.onCreate(savedInstanceState)
         main(viewModel)
     }
-
+    
     fun main (viewModel: SharedViewModel){
         setContentView(R.layout.activity_main)
 
@@ -28,7 +25,11 @@ class MainActivity : ComponentActivity() {
 
         logo.setImageResource(R.drawable.logo_cyan)
         lk.setImageResource(R.drawable.acc_icon)
-
+        
+        lk.setOnClickListener {
+            userData(viewModel)
+        }
+        
         val btn_langSlct = findViewById<Button>(R.id.lang_button)
         btn_langSlct.setOnClickListener {
             langSelect(viewModel)
@@ -182,81 +183,108 @@ class MainActivity : ComponentActivity() {
 
         btn_next1.setOnClickListener {
             viewModel.setTask(1)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next2.setOnClickListener {
             viewModel.setTask(2)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next3.setOnClickListener {
             viewModel.setTask(3)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next4.setOnClickListener {
             viewModel.setTask(4)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next5.setOnClickListener {
             viewModel.setTask(5)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next6.setOnClickListener {
             viewModel.setTask(6)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next7.setOnClickListener {
             viewModel.setTask(7)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next8.setOnClickListener {
             viewModel.setTask(8)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next9.setOnClickListener {
             viewModel.setTask(9)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next10.setOnClickListener {
             viewModel.setTask(10)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next11.setOnClickListener {
             viewModel.setTask(11)
-            testRes(viewModel)
+            userData(viewModel)
         }
 
         btn_next12.setOnClickListener {
             viewModel.setTask(12)
-            testRes(viewModel)
+            userData(viewModel)
         }
     }
-    
-    private fun testRes(viewModel: SharedViewModel){
-        setContentView(R.layout.activity_test_result)
+
+    private fun userData(viewModel: SharedViewModel){
+        setContentView(R.layout.activity_lk)
         val lang_field = findViewById<TextView>(R.id.lang)
         val topic_field = findViewById<TextView>(R.id.topic)
         val difficulty_field = findViewById<TextView>(R.id.difficulty)
         val task_field = findViewById<TextView>(R.id.task)
-        
 
+        val logoW = findViewById<ImageView>(R.id.logoWhite)
+        logoW.setImageResource(R.drawable.logo_white)
 
         val toMain = findViewById<Button>(R.id.toMain)
         toMain.setOnClickListener{
             main(viewModel)
         }
-        lang_field.setText("Lang: " + viewModel.lang.value.toString())
-        topic_field.setText("Topic: " + viewModel.topic.value.toString())
-        difficulty_field.setText("Difficulty: " + viewModel.dfclty.value.toString())
-        task_field.setText("Task #" + viewModel.task.value.toString())
+        var l : String
+        var to : String
+        var d : String
+        var ta : String
+
+        if (viewModel.lang.value == 1) l = getString(R.string.lang_value1)
+        else if (viewModel.lang.value == 2) l = getString(R.string.lang_value2)
+        else if (viewModel.lang.value == 3) l = getString(R.string.lang_value3)
+        else if (viewModel.lang.value == 4) l = getString(R.string.lang_value4)
+        else l = getString(R.string.not_chosen)
+
+        if (viewModel.topic.value == 1) to = getString(R.string.topic1)
+        else if (viewModel.topic.value == 2) to = getString(R.string.topic2)
+        else if (viewModel.topic.value == 3) to = getString(R.string.topic3)
+        else if (viewModel.topic.value == 4) to = getString(R.string.topic4)
+        else to = getString(R.string.not_chosen)
+
+        if (viewModel.dfclty.value == 1) d = getString(R.string.easy)
+        else if (viewModel.lang.value == 2) d = getString(R.string.mid)
+        else if (viewModel.lang.value == 3) d = getString(R.string.hard)
+        else if (viewModel.lang.value == 4) d = getString(R.string.test)
+        else d = getString(R.string.not_chosen)
+
+        if (viewModel.task.value == null) ta = getString(R.string.not_chosen)
+        else ta = viewModel.task.value.toString()
+
+        lang_field.setText("Язык: " + l)
+        topic_field.setText("Тема: " + to)
+        difficulty_field.setText("Сложность: " + d)
+        task_field.setText("Задание: " + ta)
     }
 }

@@ -6,22 +6,23 @@
     <string name="task_select">Задание</string>
     <string name="menu">Меню</string>
     <string name="again">Ещё раз</string>
+    <string name="not_chosen">не выбрано</string>
     <string name="success">Успех!</string>
     <string name="next">Дальше</string>
     <string name="easy">Легкий</string>
     <string name="mid">Средний</string>
     <string name="hard">Высокий</string>
     <string name="test">Тестирование</string>
-    <string name="Cplusplus">C++</string>
-    <string name="java">Java</string>
-    <string name="python">Python</string>
-    <string name="SQL">SQL</string>
+    <string name="lang_value1">C++</string>
+    <string name="lang_value2">Java</string>
+    <string name="lang_value3">Python</string>
+    <string name="lang_value4">Go</string>
     <string name="Task">Task</string>
     <string name="Task_1_content">Task 1 content</string>
     <string name="code_task_1">code task 1</string>
-    <string name="cycles">Циклы</string>
-    <string name="arrays">Массивы</string>
-    <string name="OOP">ООП</string>
-    <string name="functions">Функции</string>
+    <string name="topic1">Циклы</string>
+    <string name="topic2">Массивы</string>
+    <string name="topic3">ООП</string>
+    <string name="topic4">Функции</string>
 
 </resources>
