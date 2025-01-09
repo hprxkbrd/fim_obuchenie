@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
         logo.setImageResource(R.drawable.logo_cyan)
         lk.setImageResource(R.drawable.acc_icon)
-        
+
         lk.setOnClickListener {
             userData(viewModel)
         }
@@ -37,16 +38,23 @@ class MainActivity : ComponentActivity() {
 
         val btn_dfcltySlct = findViewById<Button>(R.id.difficulty_button)
         btn_dfcltySlct.setOnClickListener {
-            dfcltySelect(viewModel)
+            if (viewModel.getLangValue() == null)
+                Toast.makeText(this, getString(R.string.not_chosen)+" "+getString(R.string.lang_select), Toast.LENGTH_SHORT).show()
+            else dfcltySelect(viewModel)
         }
 
         val btn_topicSlct = findViewById<Button>(R.id.theme_button)
         btn_topicSlct.setOnClickListener {
-            themeSelect(viewModel)
+            if (viewModel.getDfcltyValue() == null)
+                Toast.makeText(this, getString(R.string.not_chosen)+" "+getString(R.string.difficulty_select), Toast.LENGTH_SHORT).show()
+            else themeSelect(viewModel)
         }
+
         val btn_lvlSlct = findViewById<Button>(R.id.task_button)
         btn_lvlSlct.setOnClickListener {
-            taskSelect(viewModel)
+            if (viewModel.getTopicValue() == null)
+                Toast.makeText(this, getString(R.string.not_chosen)+" "+getString(R.string.theme_select), Toast.LENGTH_SHORT).show()
+            else taskSelect(viewModel)
         }
     }
 
@@ -63,25 +71,33 @@ class MainActivity : ComponentActivity() {
         val btn_next1 = findViewById<Button>(R.id.button1)
         btn_next1.setOnClickListener {
             viewModel.setLang(1)
-            dfcltySelect(viewModel)
+            if (viewModel.getDfcltyValue() != null)
+                main(viewModel)
+            else dfcltySelect(viewModel)
         }
 
         val btn_next2 = findViewById<Button>(R.id.button2)
         btn_next2.setOnClickListener {
             viewModel.setLang(2)
-            dfcltySelect(viewModel)
+            if (viewModel.getDfcltyValue() != null)
+                main(viewModel)
+            else dfcltySelect(viewModel)
         }
 
         val btn_next3 = findViewById<Button>(R.id.button3)
         btn_next3.setOnClickListener {
             viewModel.setLang(3)
-            dfcltySelect(viewModel)
+            if (viewModel.getDfcltyValue() != null)
+                main(viewModel)
+            else dfcltySelect(viewModel)
         }
 
         val btn_next4 = findViewById<Button>(R.id.button4)
         btn_next4.setOnClickListener {
             viewModel.setLang(4)
-            dfcltySelect(viewModel)
+            if (viewModel.getDfcltyValue() != null)
+                main(viewModel)
+            else dfcltySelect(viewModel)
         }
     }
     
@@ -93,34 +109,44 @@ class MainActivity : ComponentActivity() {
         btn_back.setBackgroundColor(Color.parseColor("#E7EAEF"))
         btn_back.setImageResource(R.drawable.back_arrow__1_)
         btn_back.setOnClickListener {
-            langSelect(viewModel)
+            if (viewModel.getLangValue() != null)
+                main(viewModel)
+            else langSelect(viewModel)
         }
         //next
         val btn_next1 = findViewById<Button>(R.id.easyButton)
         btn_next1.setOnClickListener {
             viewModel.setDfclty(1)
-            themeSelect(viewModel)
+            if (viewModel.getTopicValue() != null)
+                main(viewModel)
+            else themeSelect(viewModel)
         }
 
         val btn_next2 = findViewById<Button>(R.id.midButton)
         btn_next2.setOnClickListener {
             viewModel.setDfclty(2)
-            themeSelect(viewModel)
+            if (viewModel.getTopicValue() != null)
+                main(viewModel)
+            else themeSelect(viewModel)
         }
 
         val btn_next3 = findViewById<Button>(R.id.hardButton)
         btn_next3.setOnClickListener {
             viewModel.setDfclty(3)
-            themeSelect(viewModel)
+            if (viewModel.getTopicValue() != null)
+                main(viewModel)
+            else themeSelect(viewModel)
         }
 
         val btn_next4 = findViewById<Button>(R.id.testButton)
         btn_next4.setOnClickListener {
             viewModel.setDfclty(0)
-            themeSelect(viewModel)
+            if (viewModel.getTopicValue() != null)
+                main(viewModel)
+            else themeSelect(viewModel)
         }
     }
-    
+
     private fun themeSelect(viewModel: SharedViewModel){
         setContentView(R.layout.activity_theme_select)
         //back
@@ -128,31 +154,41 @@ class MainActivity : ComponentActivity() {
         btn_back.setBackgroundColor(Color.parseColor("#E7EAEF"))
         btn_back.setImageResource(R.drawable.back_arrow__1_)
         btn_back.setOnClickListener {
-            dfcltySelect(viewModel)
+            if (viewModel.getDfcltyValue() != null)
+                main(viewModel)
+            else dfcltySelect(viewModel)
         }
         //next
         val btn_next1 = findViewById<Button>(R.id.topic1)
         btn_next1.setOnClickListener {
             viewModel.setTopic(1)
-            taskSelect(viewModel)
+            if (viewModel.getTaskValue() != null)
+                main(viewModel)
+            else taskSelect(viewModel)
         }
 
         val btn_next2 = findViewById<Button>(R.id.topic2)
         btn_next2.setOnClickListener {
             viewModel.setTopic(2)
-            taskSelect(viewModel)
+            if (viewModel.getTaskValue() != null)
+                main(viewModel)
+            else taskSelect(viewModel)
         }
 
         val btn_next3 = findViewById<Button>(R.id.topic3)
         btn_next3.setOnClickListener {
             viewModel.setTopic(3)
-            taskSelect(viewModel)
+            if (viewModel.getTaskValue() != null)
+                main(viewModel)
+            else taskSelect(viewModel)
         }
 
         val btn_next4 = findViewById<Button>(R.id.topic4)
         btn_next4.setOnClickListener {
             viewModel.setTopic(4)
-            taskSelect(viewModel)
+            if (viewModel.getTaskValue() != null)
+                main(viewModel)
+            else taskSelect(viewModel)
         }
     }
     
@@ -267,17 +303,17 @@ class MainActivity : ComponentActivity() {
         else if (viewModel.lang.value == 4) l = getString(R.string.lang_value4)
         else l = getString(R.string.not_chosen)
 
+        if (viewModel.dfclty.value == 1) d = getString(R.string.easy)
+        else if (viewModel.dfclty.value == 2) d = getString(R.string.mid)
+        else if (viewModel.dfclty.value == 3) d = getString(R.string.hard)
+        else if (viewModel.dfclty.value == 0) d = getString(R.string.test)
+        else d = getString(R.string.not_chosen)
+
         if (viewModel.topic.value == 1) to = getString(R.string.topic1)
         else if (viewModel.topic.value == 2) to = getString(R.string.topic2)
         else if (viewModel.topic.value == 3) to = getString(R.string.topic3)
         else if (viewModel.topic.value == 4) to = getString(R.string.topic4)
         else to = getString(R.string.not_chosen)
-
-        if (viewModel.dfclty.value == 1) d = getString(R.string.easy)
-        else if (viewModel.lang.value == 2) d = getString(R.string.mid)
-        else if (viewModel.lang.value == 3) d = getString(R.string.hard)
-        else if (viewModel.lang.value == 4) d = getString(R.string.test)
-        else d = getString(R.string.not_chosen)
 
         if (viewModel.task.value == null) ta = getString(R.string.not_chosen)
         else ta = viewModel.task.value.toString()

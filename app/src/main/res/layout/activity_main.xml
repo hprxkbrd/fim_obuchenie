@@ -49,20 +49,20 @@
         style="@style/button"
         android:layout_marginTop="20dp"
         android:text="@string/theme_select"
-        app:layout_constraintEnd_toEndOf="@+id/lang_button"
+        app:layout_constraintEnd_toEndOf="@+id/difficulty_button"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/lang_button"
-        app:layout_constraintTop_toBottomOf="@+id/lang_button" />
+        app:layout_constraintStart_toStartOf="@+id/difficulty_button"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_button" />
 
     <Button
         android:id="@+id/difficulty_button"
         style="@style/button"
         android:layout_marginTop="20dp"
         android:text="@string/difficulty_select"
-        app:layout_constraintEnd_toEndOf="@+id/theme_button"
+        app:layout_constraintEnd_toEndOf="@+id/lang_button"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/theme_button"
-        app:layout_constraintTop_toBottomOf="@+id/theme_button" />
+        app:layout_constraintStart_toStartOf="@+id/lang_button"
+        app:layout_constraintTop_toBottomOf="@+id/lang_button" />
 
     <Button
         android:id="@+id/task_button"
@@ -71,10 +71,9 @@
         android:text="@string/task_select"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/difficulty_button"
-        app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="@+id/difficulty_button"
-        app:layout_constraintTop_toBottomOf="@+id/difficulty_button"
+        app:layout_constraintEnd_toEndOf="@+id/theme_button"
+        app:layout_constraintStart_toStartOf="@+id/theme_button"
+        app:layout_constraintTop_toBottomOf="@+id/theme_button"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
