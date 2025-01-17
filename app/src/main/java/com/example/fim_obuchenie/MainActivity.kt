@@ -12,10 +12,17 @@ import androidx.activity.viewModels
 
 class MainActivity : ComponentActivity() {
 
+    private val viewModel : SharedViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModel : SharedViewModel by viewModels()
         super.onCreate(savedInstanceState)
+        viewModel.restoreInstance()
         main(viewModel)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.saveInstance()
     }
     
     fun main (viewModel: SharedViewModel){

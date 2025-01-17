@@ -3,8 +3,19 @@ package com.example.fim_obuchenie
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.io.File
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.fasterxml.jackson.module.kotlin.readValue
+import java.io.FileNotFoundException
+import java.io.IOException
+
+
+data class User(val lang: Int?, val diff: Int?, val topic: Int?)
 
 class SharedViewModel : ViewModel(){
+
+    val model = Model()
 
     private val _lang = MutableLiveData<Int>()
     private val _topic = MutableLiveData<Int>()
@@ -19,18 +30,33 @@ class SharedViewModel : ViewModel(){
     val task: LiveData<Int> get() = _task
     val cmpltdtask: LiveData<Int> get() = _cmpltdtask
 
+    fun saveInstance(){
+        val data = User(_lang.value, _dfclty.value, _topic.value)
+        model.createJsonInstanceFile(data)
+    }
+
+    fun restoreInstance(){
+        try {
+            setLang(model.readJsonInstanceFile().lang)
+            setDfclty(model.readJsonInstanceFile().diff)
+            setTopic(model.readJsonInstanceFile().topic)
+        } catch (e:FileNotFoundException){
+            println(e.message)
+        }
+
+    }
 
     // Функции для изменения приватных MutableLiveData
-    fun setLang(lang_new: Int) {
-        _lang.value = lang_new
+    fun setLang(lang_new: Int?) {
+        _lang.value = lang_new ?: -1
     }
 
-    fun setTopic(topic_new: Int) {
-        _topic.value = topic_new
+    fun setTopic(topic_new: Int?) {
+        _topic.value = topic_new ?: -1
     }
 
-    fun setDfclty(dfclty_new: Int) {
-        _dfclty.value = dfclty_new
+    fun setDfclty(dfclty_new: Int?) {
+        _dfclty.value = dfclty_new ?: -1
     }
 
     fun setTask(task_new: Int) {
