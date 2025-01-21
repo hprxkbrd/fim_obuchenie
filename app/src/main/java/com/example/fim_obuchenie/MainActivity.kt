@@ -16,13 +16,13 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.restoreInstance()
+        viewModel.restoreInstance(this)
         main(viewModel)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.saveInstance()
+        viewModel.saveInstance(this)
     }
     
     fun main (viewModel: SharedViewModel){
@@ -45,21 +45,21 @@ class MainActivity : ComponentActivity() {
 
         val btn_dfcltySlct = findViewById<Button>(R.id.difficulty_button)
         btn_dfcltySlct.setOnClickListener {
-            if (viewModel.getLangValue() == null)
+            if (viewModel.getLangValue() == -1)
                 Toast.makeText(this, getString(R.string.not_chosen)+" "+getString(R.string.lang_select), Toast.LENGTH_SHORT).show()
             else dfcltySelect(viewModel)
         }
 
         val btn_topicSlct = findViewById<Button>(R.id.theme_button)
         btn_topicSlct.setOnClickListener {
-            if (viewModel.getDfcltyValue() == null)
+            if (viewModel.getDfcltyValue() == -1)
                 Toast.makeText(this, getString(R.string.not_chosen)+" "+getString(R.string.difficulty_select), Toast.LENGTH_SHORT).show()
             else themeSelect(viewModel)
         }
 
         val btn_lvlSlct = findViewById<Button>(R.id.task_button)
         btn_lvlSlct.setOnClickListener {
-            if (viewModel.getTopicValue() == null)
+            if (viewModel.getTopicValue() == -1)
                 Toast.makeText(this, getString(R.string.not_chosen)+" "+getString(R.string.theme_select), Toast.LENGTH_SHORT).show()
             else taskSelect(viewModel)
         }
@@ -299,31 +299,36 @@ class MainActivity : ComponentActivity() {
         toMain.setOnClickListener{
             main(viewModel)
         }
-        var l : String
-        var to : String
-        var d : String
-        var ta : String
 
-        if (viewModel.lang.value == 1) l = getString(R.string.lang_value1)
-        else if (viewModel.lang.value == 2) l = getString(R.string.lang_value2)
-        else if (viewModel.lang.value == 3) l = getString(R.string.lang_value3)
-        else if (viewModel.lang.value == 4) l = getString(R.string.lang_value4)
-        else l = getString(R.string.not_chosen)
+        val clearData = findViewById<Button>(R.id.clearData)
+        clearData.setOnClickListener{
+            viewModel.clearInstance(this)
+        }
 
-        if (viewModel.dfclty.value == 1) d = getString(R.string.easy)
-        else if (viewModel.dfclty.value == 2) d = getString(R.string.mid)
-        else if (viewModel.dfclty.value == 3) d = getString(R.string.hard)
-        else if (viewModel.dfclty.value == 0) d = getString(R.string.test)
-        else d = getString(R.string.not_chosen)
 
-        if (viewModel.topic.value == 1) to = getString(R.string.topic1)
-        else if (viewModel.topic.value == 2) to = getString(R.string.topic2)
-        else if (viewModel.topic.value == 3) to = getString(R.string.topic3)
-        else if (viewModel.topic.value == 4) to = getString(R.string.topic4)
-        else to = getString(R.string.not_chosen)
+        val l : String = if (viewModel.lang.value == 1) getString(R.string.lang_value1)
+        else if (viewModel.lang.value == 2) getString(R.string.lang_value2)
+        else if (viewModel.lang.value == 3) getString(R.string.lang_value3)
+        else if (viewModel.lang.value == 4) getString(R.string.lang_value4)
+        else if (viewModel.lang.value == -1) "-1"
+        else getString(R.string.not_chosen)
 
-        if (viewModel.task.value == null) ta = getString(R.string.not_chosen)
-        else ta = viewModel.task.value.toString()
+        val d : String = if (viewModel.dfclty.value == 1) getString(R.string.easy)
+        else if (viewModel.dfclty.value == 2) getString(R.string.mid)
+        else if (viewModel.dfclty.value == 3) getString(R.string.hard)
+        else if (viewModel.dfclty.value == 0) getString(R.string.test)
+        else if (viewModel.dfclty.value == -1) "-1"
+        else getString(R.string.not_chosen)
+
+        val to : String = if (viewModel.topic.value == 1) getString(R.string.topic1)
+        else if (viewModel.topic.value == 2) getString(R.string.topic2)
+        else if (viewModel.topic.value == 3) getString(R.string.topic3)
+        else if (viewModel.topic.value == 4) getString(R.string.topic4)
+        else if (viewModel.topic.value == -1) "-1"
+        else getString(R.string.not_chosen)
+
+        val ta : String = if (viewModel.task.value == null) getString(R.string.not_chosen)
+        else viewModel.task.value.toString()
 
         lang_field.setText("Язык: " + l)
         topic_field.setText("Тема: " + to)

@@ -1,5 +1,7 @@
 package com.example.fim_obuchenie
 
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,20 +32,23 @@ class SharedViewModel : ViewModel(){
     val task: LiveData<Int> get() = _task
     val cmpltdtask: LiveData<Int> get() = _cmpltdtask
 
-    fun saveInstance(){
-        val data = User(_lang.value, _dfclty.value, _topic.value)
-        model.createJsonInstanceFile(data)
+    fun saveInstance(context: Context){
+        model.createJsonInstanceFile(context, User(_lang.value, _dfclty.value, _topic.value))
     }
 
-    fun restoreInstance(){
-        try {
-            setLang(model.readJsonInstanceFile().lang)
-            setDfclty(model.readJsonInstanceFile().diff)
-            setTopic(model.readJsonInstanceFile().topic)
-        } catch (e:FileNotFoundException){
-            println(e.message)
-        }
+    fun clearInstance(context: Context){
+        model.createJsonInstanceFile(context, User(-1, -1, -1))
 
+    }
+
+    fun restoreInstance(context: Context){
+        try {
+            setLang(model.readJsonInstanceFile(context).lang)
+            setDfclty(model.readJsonInstanceFile(context).diff)
+            setTopic(model.readJsonInstanceFile(context).topic)
+        } catch (e:FileNotFoundException){
+            Log.d("JSON", "could not restore the instance. error : ${e.message}")
+        }
     }
 
     // Функции для изменения приватных MutableLiveData

@@ -1,5 +1,8 @@
 package com.example.fim_obuchenie
 
+import android.content.Context
+import android.nfc.Tag
+import android.util.Log
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.readValue
@@ -9,20 +12,20 @@ class Model {
 
     private val mapper = ObjectMapper().registerModule(KotlinModule.Builder().build())
 
-    fun createJsonInstanceFile(data: User) {
+    fun createJsonInstanceFile(context: Context, data: User) {
         try {
-            mapper.writeValue(File("savedInstance.json"), data)
-            println("JSON файл savedInstance.json успешно создан.")
+            mapper.writeValue(File(context.filesDir, "savedInstance.json"), data)
+            Log.d("JSON", "file created")
         } catch (e: Exception) {
-            println("Ошибка при создании JSON файла: ${e.message}")
+            Log.d("JSON", "failed to create file. error: ${e.message}")
         }
     }
 
-    fun readJsonInstanceFile() : User{
+    fun readJsonInstanceFile(context: Context) : User{
         return try {
-            mapper.readValue(File("savedInstance.json"))
+            mapper.readValue(File(context.filesDir, "savedInstance.json"))
         } catch (e: Exception) {
-            println("Error during JSON to POJO conversion: ${e.message}")
+            Log.d("JSON", "failed to read file. error: ${e.message}")
             User(-1,-1,-1)
         }
     }
