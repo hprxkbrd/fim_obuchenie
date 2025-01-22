@@ -5,15 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.io.File
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.KotlinModule
-import com.fasterxml.jackson.module.kotlin.readValue
 import java.io.FileNotFoundException
-import java.io.IOException
-
-
-data class User(val lang: Int?, val diff: Int?, val topic: Int?)
 
 class SharedViewModel : ViewModel(){
 
@@ -34,12 +26,15 @@ class SharedViewModel : ViewModel(){
 
     fun saveInstance(context: Context){
         model.createJsonInstanceFile(context, User(_lang.value, _dfclty.value, _topic.value))
+        Log.i("JSON", "instance saved")
     }
 
     fun clearInstance(context: Context){
         model.createJsonInstanceFile(context, User(-1, -1, -1))
         setTask(-1)
+        Log.i("JSON", "instance cleared")
         restoreInstance(context)
+        Log.i("JSON", "just updated")
     }
 
     fun restoreInstance(context: Context){
@@ -47,8 +42,9 @@ class SharedViewModel : ViewModel(){
             setLang(model.readJsonInstanceFile(context).lang)
             setDfclty(model.readJsonInstanceFile(context).diff)
             setTopic(model.readJsonInstanceFile(context).topic)
+            Log.i("JSON", "data restored")
         } catch (e:FileNotFoundException){
-            Log.d("JSON", "could not restore the instance. error : ${e.message}")
+            Log.e("JSON", "could not restore the instance. error : ${e.message}")
         }
     }
 
