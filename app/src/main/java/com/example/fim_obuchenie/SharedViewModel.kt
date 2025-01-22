@@ -17,7 +17,7 @@ data class User(val lang: Int?, val diff: Int?, val topic: Int?)
 
 class SharedViewModel : ViewModel(){
 
-    val model = Model()
+    private val model = Model()
 
     private val _lang = MutableLiveData<Int>()
     private val _topic = MutableLiveData<Int>()
@@ -38,7 +38,8 @@ class SharedViewModel : ViewModel(){
 
     fun clearInstance(context: Context){
         model.createJsonInstanceFile(context, User(-1, -1, -1))
-
+        setTask(-1)
+        restoreInstance(context)
     }
 
     fun restoreInstance(context: Context){

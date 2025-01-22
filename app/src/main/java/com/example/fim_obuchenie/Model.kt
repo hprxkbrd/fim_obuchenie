@@ -15,7 +15,7 @@ class Model {
     fun createJsonInstanceFile(context: Context, data: User) {
         try {
             mapper.writeValue(File(context.filesDir, "savedInstance.json"), data)
-            Log.d("JSON", "file created")
+            Log.d("JSON", "file created. path: ${context.filesDir}")
         } catch (e: Exception) {
             Log.d("JSON", "failed to create file. error: ${e.message}")
         }
