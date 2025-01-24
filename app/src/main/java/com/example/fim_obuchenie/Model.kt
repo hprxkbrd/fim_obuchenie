@@ -1,8 +1,8 @@
 package com.example.fim_obuchenie
 
 import android.content.Context
-import android.nfc.Tag
 import android.util.Log
+import androidx.room.Room
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.readValue
