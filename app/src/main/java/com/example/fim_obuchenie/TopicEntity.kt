@@ -3,9 +3,11 @@ package com.example.fim_obuchenie
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "topics",
+    indices = [Index(value = ["name", "lang_id"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = LangEntity::class, // на какую таблицу ссылаемся

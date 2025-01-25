@@ -1,17 +1,12 @@
 package com.example.fim_obuchenie
 
 import android.content.Context
+import android.database.sqlite.SQLiteConstraintException
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.io.File
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.KotlinModule
-import com.fasterxml.jackson.module.kotlin.readValue
 import java.io.FileNotFoundException
-import java.io.IOException
-
 
 data class User(val lang: Int?, val diff: Int?, val topic: Int?)
 
@@ -50,6 +45,21 @@ class SharedViewModel : ViewModel(){
         } catch (e:FileNotFoundException){
             Log.d("JSON", "could not restore the instance. error : ${e.message}")
         }
+    }
+
+    fun getDataBase(context: Context){
+        try {
+            model.insertLang(context, LangEntity(null, "1232"))
+            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value2)))
+            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value3)))
+            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value4)))
+        }catch (e: SQLiteConstraintException){
+            Log.e("Database", "could not insert langs. error: ${e.message}")
+        }
+    }
+
+    fun dropLangs(context: Context){
+        model.clearLang(context)
     }
 
     // Функции для изменения приватных MutableLiveData

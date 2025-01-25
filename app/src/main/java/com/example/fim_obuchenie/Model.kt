@@ -6,11 +6,39 @@ import androidx.room.Room
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.readValue
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.File
 
 class Model {
 
     private val mapper = ObjectMapper().registerModule(KotlinModule.Builder().build())
+
+    private fun getDataBase(context: Context) : TasksDatabase{
+        return TasksDatabase.getDB(context)
+    }
+
+    fun insertLang(context: Context, item : LangEntity){
+        val db = getDataBase(context)
+        CoroutineScope(Dispatchers.IO).launch {
+            db.langsDao().insertLang(item)
+        }
+    }
+
+    fun clearLang(context: Context){
+        val db = getDataBase(context)
+        CoroutineScope(Dispatchers.IO).launch {
+            db.langsDao().deleteLangs()
+        }
+    }
+
+    fun insertTopic(context: Context, item : TopicEntity){
+        val db = getDataBase(context)
+        CoroutineScope(Dispatchers.IO).launch {
+            db.topicDao().insertTopic(item)
+        }
+    }
 
     fun createJsonInstanceFile(context: Context, data: User) {
         try {

@@ -16,6 +16,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.dropLangs(this)
+        viewModel.getDataBase(this)
         viewModel.restoreInstance(this)
         main(viewModel)
     }
