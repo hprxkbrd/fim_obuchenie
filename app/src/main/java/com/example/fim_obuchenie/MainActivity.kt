@@ -16,15 +16,15 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.dropLangs(this)
-        viewModel.getDataBase(this)
         viewModel.restoreInstance(this)
+//        viewModel.fillDataBase(this)
         main(viewModel)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         viewModel.saveInstance(this)
+        viewModel.dropLangs(this)
     }
     
     private fun main (viewModel: SharedViewModel){
@@ -301,6 +301,8 @@ class MainActivity : ComponentActivity() {
         toMain.setOnClickListener{
             main(viewModel)
         }
+
+
 
         val clearData = findViewById<Button>(R.id.reset)
         clearData.setOnClickListener{

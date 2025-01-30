@@ -31,12 +31,6 @@ class SharedViewModel : ViewModel(){
         model.createJsonInstanceFile(context, User(_lang.value, _dfclty.value, _topic.value))
     }
 
-    fun clearInstance(context: Context){
-        model.createJsonInstanceFile(context, User(-1, -1, -1))
-        setTask(-1)
-        restoreInstance(context)
-    }
-
     fun restoreInstance(context: Context){
         try {
             setLang(model.readJsonInstanceFile(context).lang)
@@ -47,19 +41,10 @@ class SharedViewModel : ViewModel(){
         }
     }
 
-    fun getDataBase(context: Context){
-        try {
-            model.insertLang(context, LangEntity(null, "1232"))
-            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value2)))
-            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value3)))
-            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value4)))
-        }catch (e: SQLiteConstraintException){
-            Log.e("Database", "could not insert langs. error: ${e.message}")
-        }
-    }
-
-    fun dropLangs(context: Context){
-        model.clearLang(context)
+    fun clearInstance(context: Context){
+        model.createJsonInstanceFile(context, User(-1, -1, -1))
+        setTask(-1)
+        restoreInstance(context)
     }
 
     // Функции для изменения приватных MutableLiveData
@@ -89,4 +74,19 @@ class SharedViewModel : ViewModel(){
     fun getDfcltyValue() : Int? = _dfclty.value
     fun getTaskValue() : Int? = _task.value
     fun getCmpltdTaskValue() : Int? = _cmpltdtask.value
+
+    fun fillDataBase(context: Context){
+        try {
+            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value1)))
+            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value1)))
+            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value3)))
+            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value4)))
+        }catch (e: SQLiteConstraintException){
+            Log.e("db-debug", "could not insert langs. error: ${e.message}")
+        }
+    }
+
+    fun dropLangs(context: Context){
+        model.clearLang(context)
+    }
 }

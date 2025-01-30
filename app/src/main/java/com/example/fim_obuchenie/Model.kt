@@ -1,6 +1,7 @@
 package com.example.fim_obuchenie
 
 import android.content.Context
+import android.database.sqlite.SQLiteConstraintException
 import android.util.Log
 import androidx.room.Room
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -22,7 +23,12 @@ class Model {
     fun insertLang(context: Context, item : LangEntity){
         val db = getDataBase(context)
         CoroutineScope(Dispatchers.IO).launch {
-            db.langsDao().insertLang(item)
+            try {
+                db.langsDao().insertLang(item)
+                Log.i("db-debug", "lang ${item.lang_name} inserted")
+            }catch (e:SQLiteConstraintException){
+                Log.e("db-debug", "could not insert ${item.lang_name}: ${e.message}")
+            }
         }
     }
 
@@ -30,6 +36,7 @@ class Model {
         val db = getDataBase(context)
         CoroutineScope(Dispatchers.IO).launch {
             db.langsDao().deleteLangs()
+            Log.i("db-debug", "data cleared")
         }
     }
 
