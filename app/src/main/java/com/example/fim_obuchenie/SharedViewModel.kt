@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.FileNotFoundException
 
 data class User(val lang: Int?, val diff: Int?, val topic: Int?)
@@ -75,14 +77,10 @@ class SharedViewModel : ViewModel(){
     fun getTaskValue() : Int? = _task.value
     fun getCmpltdTaskValue() : Int? = _cmpltdtask.value
 
-    fun fillDataBase(context: Context){
-        try {
-            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value1)))
-            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value1)))
-            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value3)))
-            model.insertLang(context, LangEntity(null, context.getString(R.string.lang_value4)))
-        }catch (e: SQLiteConstraintException){
-            Log.e("db-debug", "could not insert langs. error: ${e.message}")
+
+    suspend fun getLangName(context: Context, langId : Int) : String{
+        return withContext(Dispatchers.IO) {
+            model.getLang(context, langId).lang_name
         }
     }
 

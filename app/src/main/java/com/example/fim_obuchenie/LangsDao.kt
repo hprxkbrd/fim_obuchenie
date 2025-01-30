@@ -15,7 +15,7 @@ interface LangsDao {
     @Query("SELECT * FROM languages WHERE id = 2")
     suspend fun getLang2(): LangEntity
 
-    @Query("SELECT * FROM languages WHERE id = 2")
+    @Query("SELECT * FROM languages WHERE id = 3")
     suspend fun getLang3(): LangEntity
 
     @Query("SELECT * FROM languages WHERE id = 4")

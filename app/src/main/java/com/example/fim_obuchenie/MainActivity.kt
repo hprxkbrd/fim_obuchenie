@@ -2,6 +2,7 @@ package com.example.fim_obuchenie
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -9,6 +10,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
 
@@ -17,7 +23,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.restoreInstance(this)
-//        viewModel.fillDataBase(this)
         main(viewModel)
     }
 
@@ -77,7 +82,19 @@ class MainActivity : ComponentActivity() {
             main(viewModel)
         }
         //next
+
         val btn_next1 = findViewById<Button>(R.id.button1)
+        val btn_next2 = findViewById<Button>(R.id.button2)
+        val btn_next3 = findViewById<Button>(R.id.button3)
+        val btn_next4 = findViewById<Button>(R.id.button4)
+
+        CoroutineScope(Dispatchers.IO).launch(Dispatchers.IO + CoroutineName("MyCoroutine")) {
+            btn_next1.text = viewModel.getLangName(this@MainActivity, 1)
+            btn_next2.text = viewModel.getLangName(this@MainActivity, 2)
+            btn_next3.text = viewModel.getLangName(this@MainActivity, 3)
+            btn_next4.text = viewModel.getLangName(this@MainActivity, 4)
+        }
+
         btn_next1.setOnClickListener {
             viewModel.setLang(1)
             if (viewModel.getDfcltyValue() != null)
@@ -85,7 +102,6 @@ class MainActivity : ComponentActivity() {
             else dfcltySelect(viewModel)
         }
 
-        val btn_next2 = findViewById<Button>(R.id.button2)
         btn_next2.setOnClickListener {
             viewModel.setLang(2)
             if (viewModel.getDfcltyValue() != null)
@@ -93,7 +109,6 @@ class MainActivity : ComponentActivity() {
             else dfcltySelect(viewModel)
         }
 
-        val btn_next3 = findViewById<Button>(R.id.button3)
         btn_next3.setOnClickListener {
             viewModel.setLang(3)
             if (viewModel.getDfcltyValue() != null)
@@ -101,7 +116,6 @@ class MainActivity : ComponentActivity() {
             else dfcltySelect(viewModel)
         }
 
-        val btn_next4 = findViewById<Button>(R.id.button4)
         btn_next4.setOnClickListener {
             viewModel.setLang(4)
             if (viewModel.getDfcltyValue() != null)

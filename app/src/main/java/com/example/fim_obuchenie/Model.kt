@@ -10,6 +10,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 class Model {
@@ -37,6 +38,19 @@ class Model {
         CoroutineScope(Dispatchers.IO).launch {
             db.langsDao().deleteLangs()
             Log.i("db-debug", "data cleared")
+        }
+    }
+
+    suspend fun getLang(context: Context, langId: Int) : LangEntity{
+        val db = getDataBase(context)
+        return withContext(Dispatchers.IO) {
+            when (langId) {
+                1 -> db.langsDao().getLang1()
+                2 -> db.langsDao().getLang2()
+                3 -> db.langsDao().getLang3()
+                4 -> db.langsDao().getLang4()
+                else -> throw IllegalArgumentException("Invalid langId: $langId")
+            }
         }
     }
 
