@@ -71,17 +71,20 @@ class SharedViewModel : ViewModel(){
     }
 
     // Функции для получения текущего значения (могут быть полезны в некоторых случаях)
-    fun getLangValue() : Int? = _lang.value
-    fun getTopicValue() : Int? = _topic.value
-    fun getDfcltyValue() : Int? = _dfclty.value
-    fun getTaskValue() : Int? = _task.value
-    fun getCmpltdTaskValue() : Int? = _cmpltdtask.value
+    fun getLangValue() : Int =  _lang.value ?: -1
+    fun getTopicValue() : Int = _topic.value ?: -1
+    fun getDfcltyValue() : Int = _dfclty.value ?: -1
+    fun getTaskValue() : Int = _task.value ?: -1
+    fun getCmpltdTaskValue() : Int = _cmpltdtask.value ?: -1
 
 
     suspend fun getLangName(context: Context, langId : Int) : String{
-        return withContext(Dispatchers.IO) {
-            model.getLang(context, langId).lang_name
-        }
+        return model.getLang(context, langId).lang_name
+    }
+
+    suspend fun getTopicName(context: Context, langId: Int, difficulty : Int, topicNum : Int) : String{
+        val topicList = model.getTopicList(context, langId, difficulty)
+        return topicList[topicNum-1].topic_name
     }
 
     fun dropLangs(context: Context){

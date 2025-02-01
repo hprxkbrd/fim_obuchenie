@@ -44,13 +44,14 @@ class Model {
     suspend fun getLang(context: Context, langId: Int) : LangEntity{
         val db = getDataBase(context)
         return withContext(Dispatchers.IO) {
-            when (langId) {
-                1 -> db.langsDao().getLang1()
-                2 -> db.langsDao().getLang2()
-                3 -> db.langsDao().getLang3()
-                4 -> db.langsDao().getLang4()
-                else -> throw IllegalArgumentException("Invalid langId: $langId")
-            }
+            db.langsDao().getLang(langId)
+        }
+    }
+
+    suspend fun getTopicList(context: Context, langId: Int, difficulty: Int) : List<TopicEntity>{
+        val db = getDataBase(context)
+        return withContext(Dispatchers.IO){
+            db.topicDao().getTopics(langId, difficulty)
         }
     }
 

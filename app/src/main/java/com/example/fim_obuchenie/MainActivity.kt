@@ -2,7 +2,6 @@ package com.example.fim_obuchenie
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -14,7 +13,6 @@ import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
 
@@ -88,7 +86,7 @@ class MainActivity : ComponentActivity() {
         val btn_next3 = findViewById<Button>(R.id.button3)
         val btn_next4 = findViewById<Button>(R.id.button4)
 
-        CoroutineScope(Dispatchers.IO).launch(Dispatchers.IO + CoroutineName("MyCoroutine")) {
+        CoroutineScope(Dispatchers.IO).launch(Dispatchers.IO + CoroutineName("language buttons text setting")) {
             btn_next1.text = viewModel.getLangName(this@MainActivity, 1)
             btn_next2.text = viewModel.getLangName(this@MainActivity, 2)
             btn_next3.text = viewModel.getLangName(this@MainActivity, 3)
@@ -97,28 +95,28 @@ class MainActivity : ComponentActivity() {
 
         btn_next1.setOnClickListener {
             viewModel.setLang(1)
-            if (viewModel.getDfcltyValue() != null)
+            if (viewModel.getDfcltyValue() != -1)
                 main(viewModel)
             else dfcltySelect(viewModel)
         }
 
         btn_next2.setOnClickListener {
             viewModel.setLang(2)
-            if (viewModel.getDfcltyValue() != null)
+            if (viewModel.getDfcltyValue() != -1)
                 main(viewModel)
             else dfcltySelect(viewModel)
         }
 
         btn_next3.setOnClickListener {
             viewModel.setLang(3)
-            if (viewModel.getDfcltyValue() != null)
+            if (viewModel.getDfcltyValue() != -1)
                 main(viewModel)
             else dfcltySelect(viewModel)
         }
 
         btn_next4.setOnClickListener {
             viewModel.setLang(4)
-            if (viewModel.getDfcltyValue() != null)
+            if (viewModel.getDfcltyValue() != -1)
                 main(viewModel)
             else dfcltySelect(viewModel)
         }
@@ -132,7 +130,7 @@ class MainActivity : ComponentActivity() {
         btn_back.setBackgroundColor(Color.parseColor("#E7EAEF"))
         btn_back.setImageResource(R.drawable.back_arrow__1_)
         btn_back.setOnClickListener {
-            if (viewModel.getLangValue() != null)
+            if (viewModel.getLangValue() != -1)
                 main(viewModel)
             else langSelect(viewModel)
         }
@@ -140,7 +138,7 @@ class MainActivity : ComponentActivity() {
         val btn_next1 = findViewById<Button>(R.id.easyButton)
         btn_next1.setOnClickListener {
             viewModel.setDfclty(1)
-            if (viewModel.getTopicValue() != null)
+            if (viewModel.getTopicValue() != -1)
                 main(viewModel)
             else themeSelect(viewModel)
         }
@@ -148,7 +146,7 @@ class MainActivity : ComponentActivity() {
         val btn_next2 = findViewById<Button>(R.id.midButton)
         btn_next2.setOnClickListener {
             viewModel.setDfclty(2)
-            if (viewModel.getTopicValue() != null)
+            if (viewModel.getTopicValue() != -1)
                 main(viewModel)
             else themeSelect(viewModel)
         }
@@ -156,7 +154,7 @@ class MainActivity : ComponentActivity() {
         val btn_next3 = findViewById<Button>(R.id.hardButton)
         btn_next3.setOnClickListener {
             viewModel.setDfclty(3)
-            if (viewModel.getTopicValue() != null)
+            if (viewModel.getTopicValue() != -1)
                 main(viewModel)
             else themeSelect(viewModel)
         }
@@ -164,7 +162,7 @@ class MainActivity : ComponentActivity() {
         val btn_next4 = findViewById<Button>(R.id.testButton)
         btn_next4.setOnClickListener {
             viewModel.setDfclty(0)
-            if (viewModel.getTopicValue() != null)
+            if (viewModel.getTopicValue() != -1)
                 main(viewModel)
             else themeSelect(viewModel)
         }
@@ -177,39 +175,51 @@ class MainActivity : ComponentActivity() {
         btn_back.setBackgroundColor(Color.parseColor("#E7EAEF"))
         btn_back.setImageResource(R.drawable.back_arrow__1_)
         btn_back.setOnClickListener {
-            if (viewModel.getDfcltyValue() != null)
+            if (viewModel.getDfcltyValue() != -1)
                 main(viewModel)
             else dfcltySelect(viewModel)
         }
         //next
         val btn_next1 = findViewById<Button>(R.id.topic1)
+        val btn_next2 = findViewById<Button>(R.id.topic2)
+        val btn_next3 = findViewById<Button>(R.id.topic3)
+        val btn_next4 = findViewById<Button>(R.id.topic4)
+
+        CoroutineScope(Dispatchers.IO).launch(Dispatchers.IO + CoroutineName("topic buttons text setting")) {
+            btn_next1.text = viewModel.getTopicName(this@MainActivity,
+                viewModel.getLangValue(), viewModel.getDfcltyValue(), 1)
+            btn_next2.text = viewModel.getTopicName(this@MainActivity,
+                viewModel.getLangValue(), viewModel.getDfcltyValue(), 2)
+            btn_next3.text = viewModel.getTopicName(this@MainActivity,
+                viewModel.getLangValue(), viewModel.getDfcltyValue(), 3)
+            btn_next4.text = viewModel.getTopicName(this@MainActivity,
+                viewModel.getLangValue(), viewModel.getDfcltyValue(), 4)
+        }
+
         btn_next1.setOnClickListener {
             viewModel.setTopic(1)
-            if (viewModel.getTaskValue() != null)
+            if (viewModel.getTaskValue() != -1)
                 main(viewModel)
             else taskSelect(viewModel)
         }
 
-        val btn_next2 = findViewById<Button>(R.id.topic2)
         btn_next2.setOnClickListener {
             viewModel.setTopic(2)
-            if (viewModel.getTaskValue() != null)
+            if (viewModel.getTaskValue() != -1)
                 main(viewModel)
             else taskSelect(viewModel)
         }
 
-        val btn_next3 = findViewById<Button>(R.id.topic3)
         btn_next3.setOnClickListener {
             viewModel.setTopic(3)
-            if (viewModel.getTaskValue() != null)
+            if (viewModel.getTaskValue() != -1)
                 main(viewModel)
             else taskSelect(viewModel)
         }
 
-        val btn_next4 = findViewById<Button>(R.id.topic4)
         btn_next4.setOnClickListener {
             viewModel.setTopic(4)
-            if (viewModel.getTaskValue() != null)
+            if (viewModel.getTaskValue() != -1)
                 main(viewModel)
             else taskSelect(viewModel)
         }
