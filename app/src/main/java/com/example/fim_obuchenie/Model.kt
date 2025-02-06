@@ -21,33 +21,6 @@ class Model {
         return TasksDatabase.getDB(context)
     }
 
-    fun insertLang(context: Context, item : LangEntity){
-        val db = getDataBase(context)
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                db.langsDao().insertLang(item)
-                Log.i("db-debug", "lang ${item.lang_name} inserted")
-            }catch (e:SQLiteConstraintException){
-                Log.e("db-debug", "could not insert ${item.lang_name}: ${e.message}")
-            }
-        }
-    }
-
-    fun deleteLangs(context: Context){
-        Log.i("DBinit", "model: connecting to db...")
-        val db = getDataBase(context)
-        Log.i("DBinit", "model: connected to db V")
-        CoroutineScope(Dispatchers.IO).launch {
-            Log.i("DBinit", "model: deleting langs...")
-            try {
-                db.langsDao().deleteLangs()
-                Log.i("DBinit", "model: langs deleted V")
-            }catch (e:Exception){
-                Log.e("DBinit", "model: could not delete langs, error: ${e.message}")
-            }
-        }
-    }
-
     suspend fun getLang(context: Context, langId: Int) : LangEntity{
         Log.d("getLang", "getLang start. langId: $langId")
         val db = getDataBase(context)
@@ -72,22 +45,6 @@ class Model {
         }
     }
 
-    fun insertTopic(context: Context, item : TopicEntity){
-        val db = getDataBase(context)
-        CoroutineScope(Dispatchers.IO).launch {
-            db.topicDao().insertTopic(item)
-        }
-    }
-
-    fun deleteTopics(context: Context){
-        Log.i("DBinit", "model: connecting to db...")
-        val db = getDataBase(context)
-        Log.i("DBinit", "model: connected to db V")
-        CoroutineScope(Dispatchers.IO).launch {
-            db.topicDao().deleteTopics()
-        }
-    }
-
     fun DBinit(context: Context){
         Log.d("DBinit", "model: connecting to db...")
         val db = getDataBase(context)
@@ -109,7 +66,7 @@ class Model {
             TopicEntity(8, "Работа с файлами", 1, 2),
             TopicEntity(9, "Создание классов и объектов", 1, 3),
             TopicEntity(10, "Конструкторы", 1, 3),
-            TopicEntity(11, "Дружественные классы и наследование", 1, 3),
+            TopicEntity(11, "Дружественные классы, наследование", 1, 3),
             TopicEntity(12, "Абстрактные классы и методы", 1, 3),
             TopicEntity(13, "Переменные и типы данных", 2, 1),
             TopicEntity(14, "Условные конструкции", 2, 1),
@@ -121,7 +78,7 @@ class Model {
             TopicEntity(20, "Конструкторы класса", 2, 2),
             TopicEntity(21, "Наследование", 2, 3),
             TopicEntity(22, "Полиморфизм", 2, 3),
-            TopicEntity(23, "Абстрактные классы и методы + Интерфейсы", 2, 3),
+            TopicEntity(23, "Абстракции + Интерфейсы", 2, 3),
             TopicEntity(24, "Анонимные классы", 2, 3),
             TopicEntity(25, "Переменные и типы данных", 3, 1),
             TopicEntity(26, "Условные конструкции", 3, 1),

@@ -196,12 +196,12 @@ class MainActivity : ComponentActivity() {
             else themeSelect(viewModel)
         }
         
-        btnNext4.setOnClickListener {
-            viewModel.setDfclty(0)
-            if (viewModel.getTopicValue() != -1)
-                main(viewModel)
-            else themeSelect(viewModel)
-        }
+//        btnNext4.setOnClickListener {
+//            viewModel.setDfclty(0)
+//            if (viewModel.getTopicValue() != -1)
+//                main(viewModel)
+//            else themeSelect(viewModel)
+//        }
     }
 
     private fun themeSelect(viewModel: SharedViewModel){
