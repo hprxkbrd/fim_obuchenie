@@ -27,18 +27,18 @@
 
     <Button
         android:id="@+id/topic1"
-        style="@style/button"
-        android:layout_marginTop="72dp"
+        style="@style/bigButton"
+        android:layout_marginTop="36dp"
         android:text="..."
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <Button
         android:id="@+id/topic2"
-        style="@style/button"
+        style="@style/bigButton"
         android:layout_marginTop="16dp"
         android:text="..."
         app:layout_constraintEnd_toEndOf="@+id/topic1"
@@ -49,7 +49,7 @@
 
     <Button
         android:id="@+id/topic3"
-        style="@style/button"
+        style="@style/bigButton"
         android:layout_marginTop="16dp"
         android:text="..."
         app:layout_constraintEnd_toEndOf="@+id/topic2"
@@ -60,7 +60,7 @@
 
     <Button
         android:id="@+id/topic4"
-        style="@style/button"
+        style="@style/bigButton"
         android:layout_marginTop="16dp"
         android:text="..."
         android:layout_marginBottom="10dp"
