@@ -78,13 +78,24 @@ class SharedViewModel : ViewModel(){
     fun getCmpltdTaskValue() : Int = _cmpltdtask.value ?: -1
 
 
-    suspend fun getLangName(context: Context, langId : Int) : String{
-        return model.getLang(context, langId).lang_name
+    suspend fun getLangName(context: Context, langId : Int) : String {
+        try {
+            return model.getLang(context, langId).lang_name
+        } catch (e: Exception) {
+            Log.e("getLangName", "something went wrong: ${e.message}")
+            return context.getString(R.string.not_chosen)
+        }
     }
 
+
     suspend fun getTopicName(context: Context, langId: Int, difficulty : Int, topicNum : Int) : String{
-        val topicList = model.getTopicList(context, langId, difficulty)
-        return topicList[topicNum-1].topic_name
+        try {
+            val topicList = model.getTopicList(context, langId, difficulty)
+            return topicList[topicNum-1].topic_name
+        }catch(e:Exception){
+            return context.getString(R.string.not_chosen)
+        }
+
     }
 
     fun DBinit(context: Context){

@@ -41,7 +41,11 @@ class MainActivity : ComponentActivity() {
         lk.setImageResource(R.drawable.acc_icon)
 
         lk.setOnClickListener {
-            userData(viewModel)
+            try {
+                userData(viewModel)
+            }catch (e:NullPointerException) {
+                Log.e("LK", "prevented passing null data")
+            }
         }
         
         val btnLangSlct = findViewById<Button>(R.id.lang_button)
@@ -350,6 +354,7 @@ class MainActivity : ComponentActivity() {
 
     private fun userData(viewModel: SharedViewModel){
         setContentView(R.layout.activity_lk)
+
         val langField = findViewById<TextView>(R.id.lang)
         val topicField = findViewById<TextView>(R.id.topic)
         val difficultyField = findViewById<TextView>(R.id.difficulty)
@@ -362,47 +367,47 @@ class MainActivity : ComponentActivity() {
         toMain.setOnClickListener{
             main(viewModel)
         }
-        
+
         val clearData = findViewById<Button>(R.id.reset)
         clearData.setOnClickListener{
             viewModel.clearInstance(this)
             main(viewModel)
         }
 
-        val l : String = when (viewModel.lang.value){
-            1 -> getString(R.string.lang_value1)
-            2 -> getString(R.string.lang_value2)
-            3 -> getString(R.string.lang_value3)
-            4 -> getString(R.string.lang_value4)
-            else -> getString(R.string.not_chosen)
+        var l = "..."
+        var d = "..."
+        var to = "..."
+        var ta = "..."
+
+        CoroutineScope(Dispatchers.IO).launch {
+            l = viewModel.getLangName(this@MainActivity, viewModel.getLangValue())
+            d = when(viewModel.getDfcltyValue()){
+                1->getString(R.string.easy)
+                2->getString(R.string.mid)
+                3->getString(R.string.hard)
+                4->getString(R.string.test)
+                else -> getString(R.string.not_chosen)
+            }
+            to = viewModel.getTopicName(this@MainActivity,
+                viewModel.getLangValue(),
+                viewModel.getDfcltyValue(),
+                viewModel.getTopicValue())
+            ta = if (viewModel.getTaskValue() <= 0 || viewModel.getTaskValue()>=13) getString(R.string.not_chosen)
+            else viewModel.getTaskValue().toString()
+
+            langField.setTextFormatted("${getString(R.string.lang_select)}: $l")
+            topicField.setTextFormatted("${getString(R.string.theme_select)}: $to")
+            difficultyField.setTextFormatted("${getString(R.string.difficulty_select)}: $d")
+            taskField.setTextFormatted("${getString(R.string.task_select)}: $ta")
         }
 
-        val d : String = when (viewModel.dfclty.value){
-            1 -> getString(R.string.easy)
-            2 -> getString(R.string.mid)
-            3 -> getString(R.string.hard)
-            0 -> getString(R.string.test)
-            else -> getString(R.string.not_chosen)
-        }
+        langField.setTextFormatted("${getString(R.string.lang_select)}: $l")
+        topicField.setTextFormatted("${getString(R.string.theme_select)}: $to")
+        difficultyField.setTextFormatted("${getString(R.string.difficulty_select)}: $d")
+        taskField.setTextFormatted("${getString(R.string.task_select)}: $ta")
+    }
 
-        val to : String = when (viewModel.topic.value){
-            1 -> getString(R.string.topic1)
-            2 -> getString(R.string.topic2)
-            3 -> getString(R.string.topic3)
-            4 -> getString(R.string.topic4)
-            else -> getString(R.string.not_chosen)
-        }
-
-        var ta : String = getString(R.string.not_chosen)
-        viewModel.task.value?.let {
-            ta = if(it > 12 || it < 0) getString(R.string.not_chosen)
-            else viewModel.task.value.toString()
-        }
-
-
-        langField.text = "Язык: " + l
-        topicField.text = "Тема: " + to
-        difficultyField.text = "Сложность: " + d
-        taskField.text = "Задание: " + ta
+    fun TextView.setTextFormatted(text: String) {
+        this.text = text
     }
 }
