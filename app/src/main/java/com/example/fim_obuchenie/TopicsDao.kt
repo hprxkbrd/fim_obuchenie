@@ -17,4 +17,7 @@ interface TopicsDao {
 
     @Insert
     suspend fun insertTopics(topics: List<TopicEntity>)
+
+    @Query("DELETE FROM topics")
+    suspend fun deleteTopics()
 }

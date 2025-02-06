@@ -2,6 +2,7 @@ package com.example.fim_obuchenie
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -21,13 +22,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.restoreInstance(this)
+        viewModel.DBinit(this)
         main(viewModel)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         viewModel.saveInstance(this)
-        viewModel.dropLangs(this)
     }
     
     private fun main (viewModel: SharedViewModel){
@@ -72,6 +73,7 @@ class MainActivity : ComponentActivity() {
 
     private fun langSelect(viewModel: SharedViewModel){
         setContentView(R.layout.activity_lang_select)
+
         //back
         val btn_back = findViewById<ImageButton>(R.id.back)
         btn_back.setBackgroundColor(Color.parseColor("#E7EAEF"))
@@ -86,12 +88,25 @@ class MainActivity : ComponentActivity() {
         val btn_next3 = findViewById<Button>(R.id.button3)
         val btn_next4 = findViewById<Button>(R.id.button4)
 
-        CoroutineScope(Dispatchers.IO).launch(Dispatchers.IO + CoroutineName("language buttons text setting")) {
-            btn_next1.text = viewModel.getLangName(this@MainActivity, 1)
-            btn_next2.text = viewModel.getLangName(this@MainActivity, 2)
-            btn_next3.text = viewModel.getLangName(this@MainActivity, 3)
-            btn_next4.text = viewModel.getLangName(this@MainActivity, 4)
+        CoroutineScope(Dispatchers.IO).launch(CoroutineName("language buttons text setting")) {
+            try {
+                btn_next1.text = viewModel.getLangName(this@MainActivity, 1)
+                btn_next2.text = viewModel.getLangName(this@MainActivity, 2)
+                btn_next3.text = viewModel.getLangName(this@MainActivity, 3)
+                btn_next4.text = viewModel.getLangName(this@MainActivity, 4)
+            } catch (e: Exception) {
+                // Обработка исключений, если они возникнут в корутине
+                Log.e("LangSelect", "Ошибка в корутине: ${e.message}")
+            } finally {
+                //Этот блок выполнится после завершения корутины, независимо от успеха или ошибки
+                Log.d("LangSelect", "Корутина languageButtonsJob завершена")
+                // Можно здесь что-то сделать после завершения, например, обновить UI,
+                // но помните, что для обновления UI из фонового потока нужно вернуться
+                // в главный поток (UI thread) с помощью withContext(Dispatchers.Main)
+                // (пример ниже)
+            }
         }
+
 
         btn_next1.setOnClickListener {
             viewModel.setLang(1)

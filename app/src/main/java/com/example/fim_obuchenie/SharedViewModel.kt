@@ -87,7 +87,7 @@ class SharedViewModel : ViewModel(){
         return topicList[topicNum-1].topic_name
     }
 
-    fun dropLangs(context: Context){
-        model.clearLang(context)
+    fun DBinit(context: Context){
+        model.DBinit(context)
     }
 }
