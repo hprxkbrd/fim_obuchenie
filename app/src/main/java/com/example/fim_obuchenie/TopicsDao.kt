@@ -6,9 +6,6 @@ import androidx.room.Query
 
 @Dao
 interface TopicsDao {
-    @Query("SELECT * FROM topics")
-    suspend fun getAllTopics(): List<LangEntity>
-
     @Query("SELECT * FROM topics WHERE lang_id = :langId AND difficulty = :difficulty")
     suspend fun getTopics(langId: Int, difficulty: Int): List<TopicEntity>
 

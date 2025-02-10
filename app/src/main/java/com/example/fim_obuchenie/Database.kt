@@ -5,10 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [LangEntity::class, TopicEntity::class],  version = 1)
+@Database(entities = [LangEntity::class, TopicEntity::class, TaskEntity::class],  version = 1)
 abstract class TasksDatabase : RoomDatabase() {
     abstract fun langsDao(): LangsDao
-    abstract  fun topicDao(): TopicsDao
+    abstract fun topicDao(): TopicsDao
+    abstract fun taskDao(): TasksDao
 
     companion object{
         fun getDB(context: Context) : TasksDatabase{

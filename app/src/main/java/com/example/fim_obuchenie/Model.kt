@@ -1,9 +1,7 @@
 package com.example.fim_obuchenie
 
 import android.content.Context
-import android.database.sqlite.SQLiteConstraintException
 import android.util.Log
-import androidx.room.Room
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.readValue
@@ -33,7 +31,7 @@ class Model {
         }
     }
 
-    suspend fun getTopicList(context: Context, langId: Int, difficulty: Int) : List<TopicEntity>{
+    suspend fun getTopic(context: Context, langId: Int, difficulty: Int) : List<TopicEntity>{
         Log.d("getTopicList", "getTopicList start. langId: $langId, difficulty: $difficulty")
         val db = getDataBase(context)
         Log.d("getTopicList", "getDataBase completed successfully")
@@ -42,6 +40,18 @@ class Model {
             val topicEntity = db.topicDao().getTopics(langId, difficulty)
             Log.d("getTopicList", "query executed successfully, result: $topicEntity")
             topicEntity
+        }
+    }
+
+    suspend fun getTasks(context: Context, topicId : Int): List<TaskEntity>{
+        Log.d("getTasks", "getTasks start. topicId: $topicId")
+        val db = getDataBase(context)
+        Log.d("getTasks", "getDataBase completed successfully")
+        return withContext(Dispatchers.IO) {
+            Log.d("getTasks", "query to db started")
+            val taskEntity = db.taskDao().getTasks(topicId)
+            Log.d("getTasks", "query executed successfully, result: $taskEntity")
+            taskEntity
         }
     }
 
@@ -105,6 +115,110 @@ class Model {
             TopicEntity(47, "Таймеры и интервалы", 4, 3),
             TopicEntity(48, "Создание объектов, встроенные функции", 4, 3)
         )
+
+//            --copypaste--
+//            TaskEntity(id = 1, type = 1, desc = "",
+//                codeFragments = listOf(
+//                    CodeFragment(0, ""),
+//                    CodeFragment(1, ""),
+//                    CodeFragment(2, ""),
+//                    CodeFragment(3, ""),
+//                    CodeFragment(4, "")
+//                ),
+//                answers = listOf(
+//                    listOf(0,1,2,3,4)
+//                ),
+//                hint = "",
+//                topicId = 1
+//            )
+
+        val tasks: List<TaskEntity> = listOf(
+            TaskEntity(id = 1, type = 1, desc = "Напишите программу, которая запрашивает у пользователя температуру в градусах Цельсия, а затем выводит эту температуру в градусах Фаренгейта.",
+                codeFragments = listOf(
+                    CodeFragment(0, "float celsius, fahrenheit;"),
+                    CodeFragment(1, "cout << \"Введите температуру в градусах Цельсия: \";"),
+                    CodeFragment(2, "cin >> celsius;"),
+                    CodeFragment(3, "fahrenheit = (celsius * 9.0 / 5.0) + 32.0;"),
+                    CodeFragment(4, "cout << \"Температура в градусах Фаренгейта: \" << fahrenheit << endl;")
+                ),
+                answers = listOf(
+                    listOf(0,1,2,3,4)
+                ),
+                hint = "Используйте типы данных float или double для хранения температуры, чтобы избежать потери точности при вычислениях. Не забудьте о вводе и выводе данных (cin и cout).",
+                topicId = 1
+            ),
+            TaskEntity(id = 2, type = 1, desc = "Напишите программу, которая запрашивает у пользователя длину и ширину прямоугольника, а затем выводит его площадь и периметр.",
+                codeFragments = listOf(
+                    CodeFragment(0, "float length, width, area, perimeter;"),
+                    CodeFragment(1, "cout << \"Введите длину прямоугольника: \";"),
+                    CodeFragment(2, "cin >> length;"),
+                    CodeFragment(3, "cout << \"Введите ширину прямоугольника: \";"),
+                    CodeFragment(4, "cin >> width;"),
+                    CodeFragment(5, "area = length * width;")
+                ),
+                answers = listOf(
+                    listOf(0,1,2,3,4,5),
+                    listOf(0,3,4,1,2,5)
+                ),
+                hint = "Используйте типы данных int или float для хранения длины и ширины.",
+                topicId = 1
+            ),
+            TaskEntity(id = 3, type = 1, desc = "Напишите программу, которая запрашивает у пользователя три целых числа, а затем выводит их среднее арифметическое.",
+                codeFragments = listOf(
+                    CodeFragment(0, "int num1, num2, num3;"),
+                    CodeFragment(1, "float average;"),
+                    CodeFragment(2, "cout << \"Введите первое целое число: \";"),
+                    CodeFragment(3, "cin >> num1;"),
+                    CodeFragment(4, "cout << \"Введите второе целое число: \";"),
+                    CodeFragment(5, "cin >> num2;"),
+                    CodeFragment(6, "cout << \"Введите третье целое число: \";"),
+                    CodeFragment(7, "cin >> num3;"),
+                    CodeFragment(8, "average = (float)(num1 + num2 + num3) / 3.0;"),
+                    CodeFragment(9, "cout << \"Среднее арифметическое: \" << average << endl;")
+                ),answers = listOf(
+                    listOf(0,1,2,3,4,5,6,7,8,9),
+                    listOf(1,0,2,3,4,5,6,7,8,9)
+                ),
+                hint = "Используйте тип данных int для хранения чисел. Чтобы получить более точное среднее арифметическое, можно привести сумму к типу float или double перед делением..",
+                topicId = 1
+            ),
+            TaskEntity(id = 4,type = 1, desc = "Напишите программу, которая запрашивает у пользователя два целых числа, а затем меняет их значения местами и выводит результат.",
+                codeFragments = listOf(
+                    CodeFragment(0, "int num1, num2, temp;"),
+                    CodeFragment(1, "cout << \"Введите первое целое число: \";"),
+                    CodeFragment(2, "cin >> num1;"),
+                    CodeFragment(3, "cout << \"Введите второе целое число: \";"),
+                    CodeFragment(4, "cin >> num2;"),
+                    CodeFragment(5, "cout << \"До обмена: num1 = \" << num1 << \", num2 = \" << num2 << endl;"),
+                    CodeFragment(6, "temp = num1;"),
+                    CodeFragment(7, "num1 = num2;"),
+                    CodeFragment(8, "num2 = temp;"),
+                    CodeFragment(9, "cout << \"После обмена: num1 = \" << num1 << \", num2 = \" << num2 << endl;"),
+                ),
+                answers = listOf(
+                    listOf()
+                ),
+                hint = "Используйте временную переменную для хранения значения одного из чисел во время обмена. (Это классический способ).",
+                topicId = 1
+            ),
+            TaskEntity(id = 5, type = 1, desc = "Напишите программу, которая запрашивает у пользователя его год рождения, а затем вычисляет и выводит его возраст в текущем году. Предположим, что текущий год - 2024.",
+                codeFragments = listOf(
+                    CodeFragment(0, "int birthYear, age;"),
+                    CodeFragment(1, "int currentYear = 2025;"),
+                    CodeFragment(2, "cout << \"Введите год вашего рождения: \";"),
+                    CodeFragment(3, "cin >> birthYear;"),
+                    CodeFragment(4, "age = currentYear - birthYear;"),
+                    CodeFragment(5, "cout << \"Ваш возраст в \" << currentYear << \" году: \" << age << endl;")
+                ),
+                answers = listOf(
+                    listOf(0,1,2,3,4,5),
+                    listOf(1,0,2,3,4,5)
+                ),
+                hint = "Используйте тип данных int для хранения года рождения. Для простоты предположите, что у пользователя уже был день рождения в текущем году.",
+                topicId = 1
+            )
+        )
+
         CoroutineScope(Dispatchers.IO).launch {
             Log.d("DBinit", "model: coroutine started V")
 

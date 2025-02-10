@@ -7,7 +7,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "topics",
-    indices = [Index(value = ["name", "lang_id"], unique = true)],
+    indices = [Index(value = ["name", "langId"], unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = LangEntity::class, // на какую таблицу ссылаемся
@@ -19,7 +19,7 @@ import androidx.room.PrimaryKey
     ])
 data class TopicEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 1,
-    @ColumnInfo(name = "name") val topic_name: String,
-    @ColumnInfo(name = "lang_id") val lang_id: Int,
+    @ColumnInfo(name = "name") val topicName: String,
+    @ColumnInfo(name = "lang_id") val langId: Int,
     @ColumnInfo(name = "difficulty") val dfclty: Int,
 )

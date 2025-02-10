@@ -1,13 +1,10 @@
 package com.example.fim_obuchenie
 
 import android.content.Context
-import android.database.sqlite.SQLiteConstraintException
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.io.FileNotFoundException
 
 data class User(val lang: Int?, val diff: Int?, val topic: Int?)
@@ -87,15 +84,13 @@ class SharedViewModel : ViewModel(){
         }
     }
 
-
     suspend fun getTopicName(context: Context, langId: Int, difficulty : Int, topicNum : Int) : String{
         try {
-            val topicList = model.getTopicList(context, langId, difficulty)
-            return topicList[topicNum-1].topic_name
+            val topicList = model.getTopic(context, langId, difficulty)
+            return topicList[topicNum-1].topicName
         }catch(e:Exception){
             return context.getString(R.string.not_chosen)
         }
-
     }
 
     fun DBinit(context: Context){
