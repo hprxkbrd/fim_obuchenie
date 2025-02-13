@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bf1b155c45f996ae3a797ab82284bbdf",
+    "identityHash": "c268bea7943f6783f8890b00e2da7f60",
     "entities": [
       {
         "tableName": "languages",
@@ -51,13 +51,13 @@
             "notNull": true
           },
           {
-            "fieldPath": "topic_name",
+            "fieldPath": "topicName",
             "columnName": "name",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "lang_id",
+            "fieldPath": "langId",
             "columnName": "lang_id",
             "affinity": "INTEGER",
             "notNull": true
@@ -77,14 +77,13 @@
         },
         "indices": [
           {
-            "name": "index_topics_name_lang_id",
+            "name": "index_topics_name_langId",
             "unique": true,
             "columnNames": [
-              "name",
-              "lang_id"
+              "name"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_topics_name_lang_id` ON `${TABLE_NAME}` (`name`, `lang_id`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_topics_name_langId` ON `${TABLE_NAME}` (`name`)"
           }
         ],
         "foreignKeys": [
@@ -100,12 +99,86 @@
             ]
           }
         ]
+      },
+      {
+        "tableName": "tasks",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` INTEGER NOT NULL, `description` TEXT NOT NULL, `codeFragments` TEXT NOT NULL, `answers` TEXT NOT NULL, `hint` TEXT NOT NULL, `topicId` INTEGER NOT NULL, `isCompleted` INTEGER NOT NULL, FOREIGN KEY(`topicId`) REFERENCES `topics`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "desc",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "codeFragments",
+            "columnName": "codeFragments",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "answers",
+            "columnName": "answers",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hint",
+            "columnName": "hint",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "topicId",
+            "columnName": "topicId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isCompl",
+            "columnName": "isCompleted",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "topics",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "topicId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bf1b155c45f996ae3a797ab82284bbdf')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c268bea7943f6783f8890b00e2da7f60')"
     ]
   }
 }

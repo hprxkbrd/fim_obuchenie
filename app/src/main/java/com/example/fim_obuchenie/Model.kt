@@ -215,45 +215,143 @@ class Model {
                     listOf(1,0,2,3,4,5)
                 ),
                 hint = "Используйте тип данных int для хранения года рождения. Для простоты предположите, что у пользователя уже был день рождения в текущем году.",
-                topicId = 1
+                topicId = 2
+            ),
+            TaskEntity(id = 6, type = 1, desc = "Напишите программу, которая принимает целое число от пользователя и выводит, является ли это число положительным, отрицательным или нулем.",
+                codeFragments = listOf(
+                    CodeFragment(0, "int number;"),
+                    CodeFragment(1, "cout << \"Введите целое число: \";"),
+                    CodeFragment(2, "cin >> number;"),
+                    CodeFragment(3, "if (number > 0) {"),
+                    CodeFragment(4, "   cout << \"Число положительное\" << endl;"),
+                    CodeFragment(5, "} else if (number < 0) {"),
+                    CodeFragment(6, "   cout << \"Число отрицательное\" << endl;"),
+                    CodeFragment(7, "} else {"),
+                    CodeFragment(8, "cout << \"Число равно нулю\" << endl;"),
+                    CodeFragment(9, "}"),
+                ),
+                answers = listOf(
+                    listOf(0,1,2,3,4,5,6,7,8,9)
+                ),
+                hint = "Используйте if, else if, и else для проверки значения числа.",
+                topicId = 2
+            ),
+            TaskEntity(id = 7, type = 1, desc = "Создайте программу-калькулятор, которая принимает два числа и операцию (+, -, \\*, /) от пользователя. Программа должна выполнить соответствующую операцию и вывести результат. Предусмотрите обработку деления на ноль.",
+                codeFragments = listOf(
+                    CodeFragment(0, "double num1, num2;"),
+                    CodeFragment(1, "char operation;"),
+                    CodeFragment(2, "cout << \"Введите два числа и операцию (например, 5 2 +): \";"),
+                    CodeFragment(3, "cin >> num1 >> num2 >> operation;"),
+                    CodeFragment(4, "switch (operation) {"),
+                    CodeFragment(5, "   case '+':"),
+                    CodeFragment(6, "       cout << num1 + num2 << endl; break"),
+                    CodeFragment(7, "   case '-':"),
+                    CodeFragment(8, "       cout << num1 - num2 << endl; break;"),
+                    CodeFragment(9, "   case '*':"),
+                    CodeFragment(10, "       cout << num1 * num2 << endl; break"),
+                    CodeFragment(11, "   case '/':"),
+                    CodeFragment(12, "       if (num2 == 0) {"),
+                    CodeFragment(13, "           cout << \"Ошибка: деление на ноль!\" << endl;"),
+                    CodeFragment(14, "       } else {"),
+                    CodeFragment(15, "           cout << num1 / num2 << std::endl;"),
+                    CodeFragment(16, "       break;"),
+                    CodeFragment(17, "   default:"),
+                    CodeFragment(18, "       cout << \"Недопустимая операция\" << std::endl;"),
+                    CodeFragment(19, "}")
+                ),
+                answers = listOf(
+                    listOf(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19),
+                    listOf(1,0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19),
+                    listOf(0,1,2,3,4,7,8,5,6,9,10,11,12,13,14,15,16,17,18,19),
+                    listOf(1,0,2,3,4,7,8,5,6,9,10,11,12,13,14,15,16,17,18,19),
+                    listOf(0,1,2,3,4,7,8,9,10,5,6,11,12,13,14,15,16,17,18,19),
+                ),
+                hint = "Используйте switch для выбора операции. Используйте if для проверки деления на ноль перед выполнением деления.",
+                topicId = 2
+            ),
+            TaskEntity(id = 8, type = 1, desc = "Напишите программу, которая принимает три числа, представляющих длины сторон треугольника. Программа должна определить, является ли треугольник равносторонним, равнобедренным или разносторонним.",
+                codeFragments = listOf(
+                    CodeFragment(0, ""),
+                    CodeFragment(1, ""),
+                    CodeFragment(2, ""),
+                    CodeFragment(3, ""),
+                    CodeFragment(4, "")
+                ),
+                answers = listOf(
+                    listOf(0,1,2,3,4)
+                ),
+                hint = "Используйте if и else if для сравнения длин сторон и определения типа треугольника.",
+                topicId = 2
+            ),
+            TaskEntity(id = 9, type = 1, desc = "Напишите программу, которая принимает год от пользователя и определяет, является ли он високосным.",
+                codeFragments = listOf(
+                    CodeFragment(0, "int number;"),
+                    CodeFragment(1, "cout << \"Введите целое число: \";"),
+                    CodeFragment(2, "cin >> number;"),
+                    CodeFragment(3, "if (number > 0) {"),
+                    CodeFragment(4, "   cout << \"Число положительное\" << endl;"),
+                    CodeFragment(5, "} else if (number < 0) {"),
+                    CodeFragment(6, "   cout << \"Число отрицательное\" << endl;"),
+                    CodeFragment(7, "} else {"),
+                    CodeFragment(8, "cout << \"Число равно нулю\" << endl;"),
+                    CodeFragment(9, "}"),
+                    ),
+                answers = listOf(
+                    listOf(0,1,2,3,4)
+                ),
+                hint = "Год является високосным, если он делится на 4, но не делится на 100, или если он делится на 400. Используйте if, else if, и оператор % (остаток от деления) для проверки условий.",
+                topicId = 2
+            ),
+            TaskEntity(id = 10, type = 1, desc = "Напишите программу, которая спрашивает у пользователя номер месяца (от 1 до 12). Программа должна определить и вывести, к какому времени года относится этот месяц. Если номер месяца не входит в диапазон от 1 до 12, выведите сообщение об ошибке.",
+                codeFragments = listOf(
+                    CodeFragment(0, "cout << \"Введите номер месяца (1-12): \";"),
+                    CodeFragment(1, "cin >> month;"),
+                    CodeFragment(2, "if (month >= 1 && month <= 12) {"),
+                    CodeFragment(3, "   if (month == 12 || month == 1 || month == 2) {"),
+                    CodeFragment(4, "       cout << \"Зима\" << endl;"),
+                    CodeFragment(5, "   } else if (month >= 3 && month <= 5) {"),
+                    CodeFragment(6, "       cout << \"Весна\" << endl;"),
+                    CodeFragment(7, "   } else if (month >= 6 && month <= 8) {"),
+                    CodeFragment(0, "       cout << \"Лето\" << std::endl;"),
+                    CodeFragment(0, "   } else {"),
+                    CodeFragment(0, "       cout << \"Осень\" << endl;"),
+                    CodeFragment(0, "} else {"),
+                    CodeFragment(0, "   cout << \"Ошибка: Некорректный номер месяца.\" << endl;"),
+                    CodeFragment(0, "}")
+                    ),
+                answers = listOf(
+                    listOf(0,1,2,3,4)
+                ),
+                hint = "",
+                topicId = 2
             )
+
         )
 
         CoroutineScope(Dispatchers.IO).launch {
-            Log.d("DBinit", "model: coroutine started V")
-
-            Log.i("DBinit", "model coroutine: deleting langs...")
             try {
                 db.langsDao().deleteLangs()
-                Log.i("DBinit", "model coroutine: langs deleted V")
             }catch (e:Exception){
                 Log.e("DBinit", "model coroutine: could not delete langs, error: ${e.message}")
             }
 
-            Log.i("DBinit", "model coroutine: deleting topics...")
             try {
                 db.topicDao().deleteTopics()
-                Log.i("DBinit", "model coroutine: topics deleted V")
             }catch (e:Exception){
                 Log.e("DBinit", "model coroutine: could not delete topics, error: ${e.message}")
             }
 
             try {
-                Log.d("DBinit", "model coroutine: inserting langs...")
                 db.langsDao().insertLangs(langs)
-                Log.d("DBinit", "model coroutine: langs inserted successfully V")
             }catch (e:Exception){
                 Log.e("DBinit", "model coroutine: could not insert langs, error: ${e.message}")
             }
 
             try {
-                Log.d("DBinit", "model coroutine: inserting topics...")
                 db.topicDao().insertTopics(topics)
-                Log.d("DBinit", "model coroutine: topics inserted successfully V")
             }catch (e:Exception){
                 Log.e("DBinit", "model coroutine: could not insert topics, error: ${e.message}")
             }
-            Log.d("DBinit", "model: coroutine finished V")
         }
     }
 
